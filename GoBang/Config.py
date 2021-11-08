@@ -36,7 +36,7 @@ CHESS_BOARD = []    # Two dimensional array used to store every chess piecess on
 for i in range(1, BOARD_ORDER + 2):                         # +2 is because we don't use (0,0), so we need one more
     row = [EMPTY_PIECE for j in range(1, BOARD_ORDER + 2) ] # +2 is because we don't use (0,0), so we need one more
     CHESS_BOARD.append(row)
-    
+
 # print(len(CHESS_BOARD[0])) # output 18
 # print(len(CHESS_BOARD[1]))
 CELL_SIZE = 30      # default 30, the size of one cell, it would 30p x 30p
@@ -55,3 +55,5 @@ BOARD_HEIGHT = 2 * MARGIN_Y + BOARD_ORDER * CELL_SIZE
 DIRECTIONS = ((1, 0), (0, 1), (1, 1), (-1, 1))
 X = 0    # horizontal indicator usgae: DIRECTION[X] where DIRECTION = (1,0)
 Y = 1    # vertical indicator usage: DIRECTION[Y] where DIRECTION = (1,0)
+
+
