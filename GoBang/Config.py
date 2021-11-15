@@ -17,6 +17,9 @@
 #   The proper way is to use enum (from enum import Enum) 
 #   If time is available, this should be done. 
 
+# define some color RGB  
+COLOR1 = (255, 0, 0)  # red 
+COLOR2 = (0, 255, 0)  # green
 # define the size of the screen
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 680
@@ -37,6 +40,11 @@ for i in range(1, BOARD_ORDER + 2):                         # +2 is because we d
     row = [EMPTY_PIECE for j in range(1, BOARD_ORDER + 2) ] # +2 is because we don't use (0,0), so we need one more
     CHESS_BOARD.append(row)
 
+LIST_ALL = []
+for i in range(BOARD_ORDER):
+    for j in range(BOARD_ORDER):
+        LIST_ALL.append((i, j))
+# print(LIST_ALL)
 # print(len(CHESS_BOARD[0])) # output 18
 # print(len(CHESS_BOARD[1]))
 CELL_SIZE = 30      # default 30, the size of one cell, it would 30p x 30p
@@ -57,3 +65,10 @@ X = 0    # horizontal indicator usgae: DIRECTION[X] where DIRECTION = (1,0)
 Y = 1    # vertical indicator usage: DIRECTION[Y] where DIRECTION = (1,0)
 
 
+# for i in range(1, BOARD_ORDER + 2):
+#     for j in range(1, BOARD_ORDER + 2):
+#         print('i=',i, 'j=',j)
+#         print(CHESS_BOARD[i][j])
+    
+    # print(CHESS_BOARD[19][19])
+# used for test

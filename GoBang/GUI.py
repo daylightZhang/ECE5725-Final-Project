@@ -14,6 +14,7 @@ import pygame               # the whole GUI is implemented by pygame
 import math
 from Config import *        # import all constants
 from Rules import *         # import all GoBang Rules
+from gobang_AI import ai
 
 def default_font(font_size=15):
     """
@@ -232,8 +233,10 @@ class GoBang_GUI():
         self.DISPLAY = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         # define the status of game 
         self.running = True 
+        self.game_end = False
         self.winner = None    #  It could be PLAYER1_PIECES or PLAYER2_PIECES
         self.order = 0        # the number to record the order of each piece sequentially(e.g. 0,1,2,3,4,5,6,...)
+        self.display_orders = []
         self.is_balck_turn = True 
         self.is_white_turn = False
         # title of the game 
@@ -243,13 +246,22 @@ class GoBang_GUI():
         self.WHITE_PIECES_IMG = pygame.transform.smoothscale(pygame.image.load('./resources/white.png'), (30, 30))  # size of chess pieces 
         self.BLACK_PIECES_IMG = pygame.transform.smoothscale(pygame.image.load('./resources/black.png'), (30, 30))
         self.PIECES_ON_BOARD = list()   # list to store all the position of pieces
+        self.WHITE_PIECES_ON_BOARD = list()
+        self.BLACK_PIECES_ON_BOARD = list() 
+        self.list1 = list()
+        self.list2 = list()
+        self.list3 = list()
         # self.WHITE_PIECES_ON_BOARD = list()   # list to store all the position of white pieces
         self.BOARD_IMG = pygame.Surface((BOARD_WIDTH, BOARD_HEIGHT)) # create a surface for chess board
         self.BOARD_IMG.fill((240, 200, 0))                           # fill the surface with RGB (240,200,0)
                                             # view the RGB color in https://en.m.fontke.com/tool/rgbschemes/
         # define all the buttons here 
         self.button_font = default_font(28)
+        self.piece_font = default_font(20)
+        self.piece_font_2 = default_font(15)
         self.quit_button = Button(self.DISPLAY,self.button_font,'Quit','BLACK','WHITE',680,600,False,None)
+        self.regret_button = Button(self.DISPLAY,self.button_font,'Regret','BLACK','WHITE',680,500,False,None)
+        self.last_piece = 1
         # draw the line on the board 
         for n in range(MARGIN_X, CELL_SIZE * (BOARD_ORDER + 1), CELL_SIZE):  # +1 is because n can reach CELL_SIZE * BOARD_ORDER. Otherwise it cannot
             width = 1
@@ -261,14 +273,23 @@ class GoBang_GUI():
     def draw_pieces(self):
         if self.order < 1:  # skip if no piece 
             return 
-        for i in range(self.order):  #  drawing the BLACK pieces on the chessboard 
-            piece_x, piece_y = self.PIECES_ON_BOARD[i - 1]
+        for i in range(1, self.order + 1):  #  drawing the BLACK pieces on the chessboard 
+            piece_x, piece_y = self.PIECES_ON_BOARD[i -1]
             #x_, y_ = self.PIECES_ON_BOARD[i]         # get the position of the current piece on board 
             # judge black or white piece
             piece_img = self.BLACK_PIECES_IMG if CHESS_BOARD[piece_x][piece_y] == BLACK_PIECE else self.WHITE_PIECES_IMG
+            color = COLOR1 if self.display_orders[i -1] is not self.last_piece else COLOR2
             self.DISPLAY.blit(piece_img,(MARGIN_X + MARGIN_X_BOARD + (piece_x -1) * CELL_SIZE,\
                                                     MARGIN_Y + MARGIN_Y_BOARD + (piece_y - 1) * CELL_SIZE))
-        
+            if self.display_orders[i - 1] < 10:    # one digit number 
+                self.draw_text(color,str(self.display_orders[i -1]),\
+                    piece_x * CELL_SIZE + MARGIN_X + 10, (piece_y - 1) * CELL_SIZE + MARGIN_Y + MARGIN_Y_BOARD + 3, self.display_orders[i - 1])
+            elif 10 <= self.display_orders[i - 1] < 100: # two digit number 
+                self.draw_text(color,str(self.display_orders[i -1]),\
+                    piece_x * CELL_SIZE + MARGIN_X + 5, (piece_y - 1) * CELL_SIZE + MARGIN_Y + MARGIN_Y_BOARD + 3, self.display_orders[i - 1])
+            elif self.display_orders[i - 1] >= 100: # three digit number 
+                self.draw_text(color,str(self.display_orders[i -1]),\
+                    piece_x * CELL_SIZE + MARGIN_X + 2, (piece_y - 1) * CELL_SIZE + MARGIN_Y + MARGIN_Y_BOARD + 6, self.display_orders[i - 1])                       
     def refresh(self, surface):
         """refresh [refresh the screen]
 
@@ -280,6 +301,7 @@ class GoBang_GUI():
         surface.blit(self.BOARD_IMG, (MARGIN_X_BOARD, MARGIN_Y_BOARD))
         self.draw_pieces()
         self.quit_button.display()
+        self.regret_button.display()
     
     def mouse_on_button(self, mouse_x, mouse_y):
         if self.quit_button.is_on_button([mouse_x,mouse_y]):       # if the mouse is on quit button 
@@ -288,6 +310,11 @@ class GoBang_GUI():
         elif self.quit_button.is_on_button([mouse_x,mouse_y]) == False:
             self.quit_button.change_color('WHITE')
         
+        if self.regret_button.is_on_button([mouse_x,mouse_y]):
+            self.regret_button.change_color('GREEN') 
+        elif self.regret_button.is_on_button([mouse_x,mouse_y]) == False:
+            self.regret_button.change_color('WHITE')
+            
     def mouse_click(self, mouse_x, mouse_y):
         # print('mouse_x = ', mouse_x,' mouse_y = ',mouse_y)
         # this means the click happens in the chessboard
@@ -301,37 +328,100 @@ class GoBang_GUI():
             x = int((mouse_x - MARGIN_X_BOARD - MARGIN_X) / CELL_SIZE) + 1    # 30 is the horizontal position of chessboard
             y = int((mouse_y - MARGIN_Y_BOARD - MARGIN_Y) / CELL_SIZE) + 1    # 80 is the vertical position of chessboard
             # print('x = ', x, ' y = ', y ) # for debug
-            if self.is_balck_turn and CHESS_BOARD[x][y] is EMPTY_PIECE:       # chess piece can be added only when the cell 
+            if self.is_balck_turn and CHESS_BOARD[x][y] is EMPTY_PIECE and self.game_end is False:    # chess piece can be added only when the cell 
                                                                               # is not occupied
                 self.PIECES_ON_BOARD.append((x,y))                            # Add the coordinates of new balck pieces 
+                self.BLACK_PIECES_ON_BOARD.append((x,y))
+                print('Black pieces here:',x,' ',y)
+                self.list3.append((x-1,y-1))
+                self.list2.append((x-1,y-1))
+                # print(self.BLACK_PIECES_ON_BOARD)
                 CHESS_BOARD[x][y] = BLACK_PIECE                               # Record the type of pieces
                 self.is_balck_turn = False                                    # change the turn for white 
                 self.is_white_turn = True 
                 self.order = self.order + 1                                   # sequence number + 1
+                self.display_orders.append(self.order)
                 if win_judgment(CHESS_BOARD,(x,y),BLACK_PIECE):
+                    self.game_end = True 
                     print('black win!')
-            elif self.is_white_turn and CHESS_BOARD[x][y] is EMPTY_PIECE:     # chess piece can be added only when the cell 
-                                                                              # is not occupied
-                self.PIECES_ON_BOARD.append((x,y))                            # Add the new white pieces 
-                CHESS_BOARD[x][y] = WHITE_PIECE                               # Record the type of pieces
-                self.is_balck_turn = True                                     # change the turn for black 
-                self.is_white_turn = False
-                self.order = self.order + 1                                   # sequence number + 1
-                if win_judgment(CHESS_BOARD,(x,y),WHITE_PIECE):
-                    print('white win!')
+            # elif self.is_white_turn and CHESS_BOARD[x][y] is EMPTY_PIECE:     # chess piece can be added only when the cell 
+            #                                                                   # is not occupied
+            #     self.PIECES_ON_BOARD.append((x,y))                            # Add the new white pieces 
+            #     self.WHITE_PIECES_ON_BOARD.append((x,y))
+            #     # print(self.WHITE_PIECES_ON_BOARD)
+            #     CHESS_BOARD[x][y] = WHITE_PIECE                               # Record the type of pieces
+            #     self.is_balck_turn = True                                     # change the turn for black 
+            #     self.is_white_turn = False
+            #     self.order = self.order + 1                                   # sequence number + 1
+            #     if win_judgment(CHESS_BOARD,(x,y),WHITE_PIECE):
+            #         print('white win!')
             # print(CHESS_BOARD[5][5])
             # print(CHESS_BOARD[5][8])
-        if self.quit_button.is_on_button([mouse_x,mouse_y]):  # if the quit button is pressed 
+        if self.quit_button.is_on_button([mouse_x,mouse_y]):   # if the quit button is pressed 
             self.running = False   # we must set self.running = False, otherwise error with pygame.fill can happen
             pygame.quit()
+        if self.regret_button.is_on_button([mouse_x,mouse_y]): # if the regret button is pressed
+            black_piece = self.BLACK_PIECES_ON_BOARD.pop()
+            white_piece = self.WHITE_PIECES_ON_BOARD.pop()
+            CHESS_BOARD[black_piece[0]][black_piece[1]] = EMPTY_PIECE
+            CHESS_BOARD[white_piece[0]][white_piece[1]] = EMPTY_PIECE
+            self.PIECES_ON_BOARD.pop()
+            self.PIECES_ON_BOARD.pop()
+            self.list1.pop()
+            self.list2.pop()
+            self.list3.pop()
+            self.list3.pop()
+            if self.last_piece > 2:
+                self.last_piece -= 2
+            else:
+                self.last_piece = 1
+            if self.order > 2:
+                self.order -= 2
+            else:
+                self.order = 1 
+            self.display_orders.pop()
+            self.display_orders.pop()
+            self.game_end = False
+            self.is_balck_turn = True
+            self.is_white_turn = False 
+            print('successufully regret')
         # elif mouse_x and mouse_y: # this means the click happens in the control panel 
         #pass 
-    
+    def Robot(self):
+        next_step = ai(self.list1,self.list2,self.list3,LIST_ALL)
+        # print(next_step)
+        x,y = next_step[0] + 1, next_step[1] + 1
+        print('Robot set white pieces here:',x,' ',y)
+        self.PIECES_ON_BOARD.append((x,y))
+        self.WHITE_PIECES_ON_BOARD.append((x,y))
+        self.list3.append((x-1,y-1))
+        self.list1.append((x-1,y-1))
+        CHESS_BOARD[x][y] = WHITE_PIECE
+        self.order = self.order + 1 
+        self.last_piece = self.order
+        self.display_orders.append(self.order)
+        # self.draw_text(COLOR1,str(self.order),x,y)
+        if win_judgment(CHESS_BOARD,(x,y),WHITE_PIECE):
+            self.game_end = True 
+            print('white win!')
+        self.is_white_turn = False 
+        self.is_balck_turn = True
+        
+    def draw_text(self, color, text, x, y, order):
+        if order < 100:
+            self.DISPLAY.blit(self.piece_font.render(text, True, color), (x, y))
+        elif order >= 100:
+            self.DISPLAY.blit(self.piece_font_2.render(text, True, color), (x, y))
+            # print('yes')
+        
     def run(self):
         while self.running:
             self.refresh(self.DISPLAY)
             pygame.display.update()
 
+            if self.is_white_turn and self.game_end is False:
+                self.Robot()
+            
             for event in pygame.event.get():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     self.mouse_click(event.pos[0], event.pos[1])
