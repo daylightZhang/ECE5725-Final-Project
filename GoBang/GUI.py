@@ -4,17 +4,21 @@
     Author: 
         Jingkai Zhang (jz544@cornell.edu)
     Version:
-        1.0
+        1.1
     Update history:
         1.0 -Add basic 
+        1.1 -Add AI
     Last modified:
         2021.11.4 -add basic content 
+        2021.11.14 -add AI, buttons
+        2021.11.20 -fix bugs with regret button
 '''
 import pygame               # the whole GUI is implemented by pygame
 import math
-from Config import *        # import all constants
-from Rules import *         # import all GoBang Rules
-from gobang_AI import ai
+from GoBang.Config import *        # import all constants
+from GoBang.Rules import *         # import all GoBang Rules
+from GoBang.gobang_AI import ai
+import os 
 
 def default_font(font_size=15):
     """
@@ -239,12 +243,13 @@ class GoBang_GUI():
         self.display_orders = []
         self.is_balck_turn = True 
         self.is_white_turn = False
+        self.img_path = '/home/pi/Desktop/ECE5725_project/ECE5725-Final-Project/GoBang/resources/'
         # title of the game 
-        self.TITLE_IMG = pygame.image.load('./resources/gobang_title.png')
+        self.TITLE_IMG = pygame.image.load(os.path.join(self.img_path, 'gobang_title.png'))
         # chess pieces 
         # Note: pygame.transform.scale() is faster, but smoothscale() gives better image 
-        self.WHITE_PIECES_IMG = pygame.transform.smoothscale(pygame.image.load('./resources/white.png'), (30, 30))  # size of chess pieces 
-        self.BLACK_PIECES_IMG = pygame.transform.smoothscale(pygame.image.load('./resources/black.png'), (30, 30))
+        self.WHITE_PIECES_IMG = pygame.transform.smoothscale(pygame.image.load(os.path.join(self.img_path, 'white.png')), (30, 30))  # size of chess pieces 
+        self.BLACK_PIECES_IMG = pygame.transform.smoothscale(pygame.image.load(os.path.join(self.img_path, 'black.png')), (30, 30))
         self.PIECES_ON_BOARD = list()   # list to store all the position of pieces
         self.WHITE_PIECES_ON_BOARD = list()
         self.BLACK_PIECES_ON_BOARD = list() 
@@ -260,7 +265,7 @@ class GoBang_GUI():
         self.piece_font = default_font(20)
         self.piece_font_2 = default_font(15)
         self.quit_button = Button(self.DISPLAY,self.button_font,'Quit','BLACK','WHITE',680,600,False,None)
-        self.regret_button = Button(self.DISPLAY,self.button_font,'Regret','BLACK','WHITE',680,500,False,None)
+        self.regret_button = Button(self.DISPLAY,self.button_font,'Wife Button','BLACK','WHITE',630,500,False,None)
         self.last_piece = 1
         # draw the line on the board 
         for n in range(MARGIN_X, CELL_SIZE * (BOARD_ORDER + 1), CELL_SIZE):  # +1 is because n can reach CELL_SIZE * BOARD_ORDER. Otherwise it cannot
@@ -378,7 +383,7 @@ class GoBang_GUI():
             if self.order > 2:
                 self.order -= 2
             else:
-                self.order = 1 
+                self.order = 0
             self.display_orders.pop()
             self.display_orders.pop()
             self.game_end = False

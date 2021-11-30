@@ -10,7 +10,7 @@
     Last modified:
         2021.11.4 -add basic content 
 '''
-from Config import *   # get all the constant
+from GoBang.Config import *   # get all the constant
 
 # Eight direction for a single cell. Why only 4 here?
 # Because we are going to use -1 to extend it to eight
