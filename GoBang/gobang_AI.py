@@ -1,6 +1,7 @@
 # from graphics import *
 from math import *
-from GoBang.Config import * 
+# from GoBang.Config import * 
+from Config import *
 import numpy as np
 
 

@@ -32,7 +32,7 @@ PLAYER2_PIECE = 2   # a label for Player_2
 BLACK_PIECE = 4     # a label for black piece
 WHITE_PIECE = 5     # a label for black piece
 # define the parameter for chessboard
-BOARD_ORDER =  18   # The order of board, if it is 19, this means 
+BOARD_ORDER =  9   # The order of board, if it is 19, this means 
                     # the board contains 19 x 19 cells 
 CHESS_BOARD = []    # Two dimensional array used to store every chess piecess on the chessboard
 
@@ -47,13 +47,13 @@ for i in range(BOARD_ORDER):
 # print(LIST_ALL)
 # print(len(CHESS_BOARD[0])) # output 18
 # print(len(CHESS_BOARD[1]))
-CELL_SIZE = 30      # default 30, the size of one cell, it would 30p x 30p
+CELL_SIZE = 50      # default 30, the size of one cell, it would 30p x 30p
                     # p stands for pixel
 MARGIN_X = 15   # the horizontal margin
 MARGIN_Y = 15   # the vertical margin
 
-MARGIN_X_BOARD = 30  # the horizontal margin for chessboard 
-MARGIN_Y_BOARD = 80  # the vertical margin for chessboard
+MARGIN_X_BOARD = 30 + 50 # the horizontal margin for chessboard 
+MARGIN_Y_BOARD = 80 + 50 # the vertical margin for chessboard
 
 # define the size of chessboard 
 BOARD_WIDTH = 2 * MARGIN_X + BOARD_ORDER * CELL_SIZE 

@@ -2,70 +2,160 @@
 # Author: Jingkai Zhang (jz544@cornell.edu) and Lanyue Fang (lf355@cornell.edu)
 # Date: 2021.12.8
 import threading
-import RPi.GPIO as GPIO  
+import RPi.GPIO as GPIO
+import cv2
+import numpy as np
 # from GoBang.GUI import GoBang_GUI # display should be written in another file 
 from HardDriver.motor import Motor
 from HardDriver.pi_camera import Camera
 from HardDriver.pump import Pump
-import time, datetime
-import logging
-import matplotlib.pyplot as plt
+import time
 
-motor = Motor()      # initialize the step motor 
-camera = Camera()    # initialize the pi camera 
-pump = Pump()        # initialize the pump 
+motor = Motor()                                               # initialize the step motor 
+camera = Camera()                                             # initialize the pi camera 
+pump = Pump()                                                 # initialize the pump 
+K_p = 2                                                       # set the pid control parameter
+calibrate_threshold = 1.5                                     # threadhold value for calibration, small than this will not calibrate 
+                                                              # this value is count as pixel, e.g. Now it is 1.5 pixels 
+# create a dictionary for flag control
+flag_controller = {'calibrate_flag':False,'calibrate_check_flag':False,\
+                   'identify_flag':False,'turn_to_AI':False,\
+                   'move_piece_flag':False,'human_finish_step':False}
 
-def PID_calibration():
-    RUNNING = True   
-    # start_time = time.time()
-    '''
-        Note:
-            In our real application, 190 steps corresponds to 25 unit distance 
-    '''
-    init_position = 200
-    cur_position, _ = camera.get_red_dot()        # get x-axis coordinate
-    target_position = 100                         # set target position for x-axis 
-    cur_pos = []                                  # used for plot figure
-    cur_pos.append(cur_position)
-    K_p = 2                                    # set the proportion control parameter
+def calibrate(red_circle):
+    if red_circle is None:                                    # If no red_circle detected, return  
+        print('No red circle detected! Try red_region_track.py')
+        return 
+    else: 
+        flag_controller['calibrate_flag'] = False             # disenable this flag in order not to open 2 same thread
+        move_step = []                                        # list to store the move steps 
+        target_position = motor.origin_coordinate
+        cur_position = [red_circle[0],red_circle[1]]          # get the center coordinates of red circle  
+        dx = target_position[0] - cur_position[0]             # compute the distance difference in x-axis 
+        dy = target_position[1] - cur_position[1]             # compute the distance difference in y-axis 
+        output_step_x = K_p * dx                              # PID control, calculate the output step for control step motor 
+        output_step_y = K_p * dy                              # output control for y axis 
+        dx_direction = -1 if dx > 0 else 1                    # set the rorating direction for x-axis 
+        dy_direction = 1 if dy > 0 else -1                    # set the rorating direction for y-axis 
+        print('target_position = ',target_position,' cur_position = ', cur_position,\
+              ' error_x = ', dx, ' error_y = ', dy, ' step_x = ', output_step_x,\
+              ' step_y = ', output_step_y)
+        move_step[0] = dx_direction * abs(output_step_x)      # x-axis 
+        move_step[1] = dy_direction * abs(output_step_y)      # y-axis 
+        motor.move_xy_by_step(move_step,False)                # multipleprocess = False, which could be set as true 
+        flag_controller['calibrate_check_flag'] = True        # enable calibration check 
+        
+def calibrate_check():
+    red_circle = camera.detect_red_circle()
+    check_dx = abs(motor.origin_position_pixel[0] - red_circle[0])
+    check_dy = abs(motor.origin_position_pixel[1] - red_circle[1])
+    if check_dx > calibrate_threshold or check_dy > calibrate_threshold:
+        red_circle_flag = 1                                   # ???? What is this flag used for  
+        flag_controller['calibrate_flag'] = True 
+        print("still need calibrate")
+        print('check_dx = ',check_dx,' check_dy = ',check_dy)
+    else:
+        print("calibrate succeeded")
+        print('check_dx = ',check_dx,' check_dy = ',check_dy)
+    flag_controller['calibrate_check_flag'] = False           # after check, disenable
+    
+def btn27_call_back(btn):
+    print('button ',btn,' is pressed!')
+    flag_controller['human_finish_step'] = True               # use a physical button to indicate human has finished   
 
-    error = 0
+def identify_black_step():
+    resize_img = cv2.resize(camera.chess_img, (270,270))      # adjust the size of chessboard image 
+    gray_img = cv2.cvtColor(resize_img, cv2.COLOR_BGR2GRAY)
+    # blurred = cv2.GaussianBlur(gray_img, (9, 9), 0)
+    _, black_stones = cv2.threshold(gray_img, 60, 255, cv2.THRESH_BINARY)
+    # hls_img = cv2.cvtColor(resize_img, cv2.COLOR_BGR2HSV)
+    # mask = cv2.inRange(resize_img, np.array([160,170,190]), np.array([255,255,255]))
+    kernel = np.ones((30,30))                                 # a 30x30 all one matrix
+    position = np.zeros((9,9))                                # a 9x9 all zero matirix to indicate the position of black pieces
+    num_black_stone = 0
+    for i in range(9):                                        # 9 rows 
+        for j in range(9):                                    # 9 colomns
+            block = black_stones[i*30:(i+1)*30,j*30:(j+1)*30] # in opencv, we express in this way (y,x)
+            check_matrix = block * kernel
+            # print('row:',i,' col:',j,' sum=',check_matrix.sum())
+            if check_matrix.sum() <= 180000:
+                num_black_stone += 1
+                position[i][j] = 1                            # 1 indicate black stone 
+                print('black stone ','row:',i+1,' col:',j+1,' sum=',check_matrix.sum())
+    print('number of black stone is ',num_black_stone)
+    return black_stones 
 
-    while RUNNING:
-        output_step = K_p * error
-        # update the current position
-        # cur_position = 25 * output_step / 190.0 + cur_position # ideal  
-        # cur_position = 25 * output_step / 190.0 + cur_position + random.random()
-        # print('output_step = ',output_step)
-        # cur_position = input('enter cur_position:')
-        # cur_position = float(cur_position)
-        photo = camera.get_current()
-        cur_position, _ = camera.get_red_dot()
-        cur_pos.append(cur_position)
-        # print(random.random())
-        error = target_position - cur_position    # compute error
-                                                  
-        if -2 <= error <= 2 or cur_position >= 1500:
-            break
-
-        print('cur_position = ',cur_position,' error = ',error,' step = ',output_step)
-        # time.sleep(1)
-
-    print('stable position = ',cur_position,' stable error = ',error)
-
-    y = cur_pos
-    x = range(len(y))
-    plt.plot(x,y)
-    plt.show()
+def place_white_chess(x_position, y_position,multiprocess=False):
+    dx_block = x_position - motor.origin_coordinate[0]
+    dy_block = y_position - motor.origin_coordinate[1]
+    dx_direction = -1 if dx_block > 0 else 1
+    dy_direction = 1 if dy_block > 0 else -1
+    pump.pick(motor)
+    if multiprocess is False:
+        motor.move('x', dx_direction * abs(dx_block))
+        time.sleep(1)
+        motor.move('y', dy_direction * abs(dy_block))
+        time.sleep(1)
+    else: 
+        motor.move_xy([dx_direction * abs(dx_block),\
+                       dy_direction * abs(dy_block)],True)
+        
+    pump.release(motor)
+    if multiprocess is False:
+        motor.move('x', -1 * dx_direction * abs(dx_block))
+        time.sleep(1)
+        motor.move('y', -1 * dy_direction * abs(dy_block))
+        time.sleep(1)
+    else:
+        motor.move_xy([-1 * dx_direction * abs(dx_block),\
+                       -1 * dy_direction * abs(dy_block)],True)
+    flag_controller['calibrate_flag'] = True                  # start the calibration
 
 def main():
     RUNNING = True 
-    
-    PID_calibration()
-    
-    # while RUNNING:
+    button = 27                                               # set the GPIO for button
+    GPIO.setup(button, GPIO.IN, pull_up_down=GPIO.PUD_UP)     # configure the GPIO
+    GPIO.add_event_detect(button, GPIO.RISING, \
+                          callback=btn27_call_back,\
+                            bouncetime=200)                   # dectecting the botton using interrupt
+    while RUNNING:
+        camera.camera_update()                                # update the camera
+        camera.img_preprocess()                               # preprocess the image
+        camera.show('Camera Preview',camera.frame)            # camera preview
+        # calibration 
+        if flag_controller['calibrate_flag']:                 # if calibrate_flag is True
+            # start a thread to calibrate 
+            thread_calibrate = threading.Thread(target=calibrate, args=(camera.red_circles,))  
+            thread_calibrate.start()
+                                
+        if flag_controller['calibrate_check_flag']:           # if calibrate_check_flag is True 
+            calibrate_check()
+        # wait for human's next step 
+        # identify human's next step with camera 
+        if flag_controller['human_finish_step']:              # if human_finish_step is True
+            '''
+                Note: The 'human_finish_step' is triggered by a physical button 
+                After human finish, the new step should be detected and recorded 
+                A function should be developed here 
+                identify_new_step()
+            '''
+            black_stones = identify_black_step()
+            camera.show('Identified black stones',black_stones)
         
-    #     pass 
+        # generate AI's step 
+        if flag_controller['turn_to_AI']:                     # if turn_to_AI is True
+            '''
+                Generate AI step, this part should be finished in gobang program
+            '''
+            pass
+        # move the piece to the designed position 
+        if flag_controller['move_piece_flag']:                # if move_piece_flag is True
+            # place_white_chess(1,2,True)                     # this function could be called 
+            pass 
+        # go back to calibration point 
+        
+        if cv2.waitKey(25) & 0xFF == ord('q'):
+            break
 
 if __name__ == '__main__':
     main()

@@ -17,9 +17,12 @@
 '''
 import pygame               # the whole GUI is implemented by pygame
 import math
-from GoBang.Config import *        # import all constants
-from GoBang.Rules import *         # import all GoBang Rules
-from GoBang.gobang_AI import ai
+# from GoBang.Config import *        # import all constants
+# from GoBang.Rules import *         # import all GoBang Rules
+# from GoBang.gobang_AI import ai
+from Config import *        # import all constants
+from Rules import *         # import all GoBang Rules
+from gobang_AI import ai
 import os 
 
 def default_font(font_size=15):
@@ -250,8 +253,8 @@ class GoBang_GUI():
         self.TITLE_IMG = pygame.image.load(os.path.join(self.img_path, 'gobang_title.png'))
         # chess pieces 
         # Note: pygame.transform.scale() is faster, but smoothscale() gives better image 
-        self.WHITE_PIECES_IMG = pygame.transform.smoothscale(pygame.image.load(os.path.join(self.img_path, 'white.png')), (30, 30))  # size of chess pieces 
-        self.BLACK_PIECES_IMG = pygame.transform.smoothscale(pygame.image.load(os.path.join(self.img_path, 'black.png')), (30, 30))
+        self.WHITE_PIECES_IMG = pygame.transform.smoothscale(pygame.image.load(os.path.join(self.img_path, 'white.png')), (50, 50))  # size of chess pieces 
+        self.BLACK_PIECES_IMG = pygame.transform.smoothscale(pygame.image.load(os.path.join(self.img_path, 'black.png')), (50, 50))
         self.PIECES_ON_BOARD = list()   # list to store all the position of pieces
         self.WHITE_PIECES_ON_BOARD = list()
         self.BLACK_PIECES_ON_BOARD = list() 
@@ -264,7 +267,7 @@ class GoBang_GUI():
                                             # view the RGB color in https://en.m.fontke.com/tool/rgbschemes/
         # define all the buttons here 
         self.button_font = default_font(28)
-        self.piece_font = default_font(20)
+        self.piece_font = default_font(35)
         self.piece_font_2 = default_font(15)
         self.quit_button = Button(self.DISPLAY,self.button_font,'Quit','BLACK','WHITE',680,600,False,None)
         self.regret_button = Button(self.DISPLAY,self.button_font,'Wife Button','BLACK','WHITE',630,500,False,None)
@@ -290,10 +293,10 @@ class GoBang_GUI():
                                                     MARGIN_Y + MARGIN_Y_BOARD + (piece_y - 1) * CELL_SIZE))
             if self.display_orders[i - 1] < 10:    # one digit number 
                 self.draw_text(color,str(self.display_orders[i -1]),\
-                    piece_x * CELL_SIZE + MARGIN_X + 10, (piece_y - 1) * CELL_SIZE + MARGIN_Y + MARGIN_Y_BOARD + 3, self.display_orders[i - 1])
+                    piece_x * CELL_SIZE + MARGIN_X + 10 + 35, (piece_y - 1) * CELL_SIZE + MARGIN_Y + MARGIN_Y_BOARD + 5, self.display_orders[i - 1])
             elif 10 <= self.display_orders[i - 1] < 100: # two digit number 
                 self.draw_text(color,str(self.display_orders[i -1]),\
-                    piece_x * CELL_SIZE + MARGIN_X + 5, (piece_y - 1) * CELL_SIZE + MARGIN_Y + MARGIN_Y_BOARD + 3, self.display_orders[i - 1])
+                    piece_x * CELL_SIZE + MARGIN_X + 5 + 32, (piece_y - 1) * CELL_SIZE + MARGIN_Y + MARGIN_Y_BOARD + 6, self.display_orders[i - 1])
             elif self.display_orders[i - 1] >= 100: # three digit number 
                 self.draw_text(color,str(self.display_orders[i -1]),\
                     piece_x * CELL_SIZE + MARGIN_X + 2, (piece_y - 1) * CELL_SIZE + MARGIN_Y + MARGIN_Y_BOARD + 6, self.display_orders[i - 1])                       

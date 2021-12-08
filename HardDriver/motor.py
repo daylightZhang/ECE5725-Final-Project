@@ -7,6 +7,7 @@
 import RPi.GPIO as GPIO
 import time
 import threading
+from init import read_calibration_data
 
 class Motor(object):
     def __init__(self):
@@ -39,8 +40,9 @@ class Motor(object):
                    [0, 0, 0, 1],
                    [1, 0, 0, 1], ]
 
-        self.cur_coordinate = [0,0,0]     # current coordinate [x,y,z]
-        self.origin_coordinate = [0,0,0]  # used for calibration
+        # self.cur_coordinate = [0,0,0]     # current coordinate [x,y,z]
+        # get the calibration point
+        _,_,self.origin_coordinate = read_calibration_data()
 
     def __del__(self):
         GPIO.cleanup()
