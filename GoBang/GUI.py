@@ -2,16 +2,18 @@
     Description:
         Implementation of GoBang GUI via pygame
     Author: 
-        Jingkai Zhang (jz544@cornell.edu)
+        Jingkai Zhang (jz544@cornell.edu) & Lanyue Fang 
     Version:
         1.1
     Update history:
         1.0 -Add basic 
         1.1 -Add AI
+        1.2 -Add interface with hardware 
     Last modified:
         2021.11.4 -add basic content 
         2021.11.14 -add AI, buttons
         2021.11.20 -fix bugs with regret button
+        2021.12.8  -add interface 
 '''
 import pygame               # the whole GUI is implemented by pygame
 import math

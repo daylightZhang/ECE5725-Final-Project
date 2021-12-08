@@ -2,7 +2,9 @@
 # Author: Jingkai Zhang (jz544@cornell.edu) and Lanyue Fang (lf355@cornell.edu)
 # Date: 2021.11.29
 import threading
+import RPi.GPIO as GPIO  
 from GoBang.GUI import GoBang_GUI
+from HardDriver.motor import Motor
 import time, datetime
 
 def GUI_dispaly():
