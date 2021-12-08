@@ -5,6 +5,7 @@
 
 import RPi.GPIO as GPIO
 import time
+import threading
 
 class Motor(object):
     def __init__(self):
@@ -83,17 +84,18 @@ class Motor(object):
                         
                         GPIO.output(pins[pin], self.seq[7 - halfstep][pin])
                 time.sleep(0.0008)
-    def move_xy(self,move_distance): # move_distance = [5,7] 5 is for x axis, 7 is for y axis
-        # thread_y = threading.Thread(target=self.move,args=('y',move_distance[1]))
-        # thread_x = threading.Thread(target=self.move,args=('x',move_distance[0]))
-        # thread_x.start()
-        # thread_y.start()
-        
-        # thread_x.join()
-        # thread_y.join()
-        
-        self.move('x',move_distance[0])
-        time.sleep(1)
-        self.move('y',move_distance[1])
-        time.sleep(1)
+    def move_xy(self,move_distance,is_multiThread=False): # move_distance = [5,7] 5 is for x axis, 7 is for y axis
+        if is_multiThread is True:
+            thread_y = threading.Thread(target=self.move,args=('y',move_distance[1]))
+            thread_x = threading.Thread(target=self.move,args=('x',move_distance[0]))
+            thread_x.start()
+            thread_y.start()
+            
+            thread_x.join()
+            thread_y.join()
+        else:
+            self.move('x',move_distance[0])
+            # time.sleep(1)
+            self.move('y',move_distance[1])
+            # time.sleep(1)
 
