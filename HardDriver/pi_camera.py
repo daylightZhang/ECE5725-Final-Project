@@ -1,6 +1,6 @@
 # Pi Camera Driver
 # Author: Lanyue Fang:(Soft: design the red_dot_track algorithm, image preprocess algorithm)
-#         Jingkai Zhang:(Soft: design the framework of class, view correction. Hard: fixed it on frame, installation) 
+#         Jingkai Zhang:(Soft: design the framework of class, view correction, Bug fix. Hard: fixed it on frame, installation) 
 # Date: 2021.11
 
 import cv2  
@@ -15,6 +15,7 @@ class Camera(object):
         self.is_cap_open = self.cap.isOpened()                               # check if the camera is open 
         self.whole_box, self.chess_box, self.cali_point = \
                                                     read_calibration_data()  # read the calibration data
+        self.red_circles = []                                                # store the red circle
     
     def __del__(self):
         self.cap.release()                                                   # release the camera 
@@ -54,7 +55,7 @@ class Camera(object):
         cv2.imshow(name,figure)
   
     def img_preprocess(self):
-        self.frame = cv2.resize(self.frame)
+        self.frame = cv2.resize(self.frame,(960,720))
         self.whole_img = np.rot90(self.perspective_transform(self.whole_box,self.frame))
         self.chess_img = np.rot90(self.perspective_transform(self.chess_box,self.frame))
         self.grayImg = cv2.cvtColor(self.whole_img, cv2.COLOR_BGR2GRAY)
@@ -64,11 +65,10 @@ class Camera(object):
         self.red_region = cv2.inRange(self.hsvImg, red_lo, red_hi)          # filter the red area 
         kernel_1 = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (4, 4))
         kernel_2 = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (15, 15))
-        self.red_region_1 = cv2.erode(self.red_region_1, kernel_1)
+        self.red_region_1 = cv2.erode(self.red_region, kernel_1)
         self.red_region_1 = cv2.dilate(self.red_region_1, kernel_1)
         self.red_region_2 = cv2.dilate(self.red_region_1, kernel_2)
         self.red_region_2 = cv2.erode(self.red_region_2, kernel_2)
-        self.red_circles = []
         
     def perspective_transform(self,box,origin_img):
         # get the original width and height
@@ -87,5 +87,10 @@ class Camera(object):
         return result_img
     
     def detect_red_dot(self):
-        pass  
-    
+        self.red_circles = cv2.HoughCircles(self.red_region_1,cv2.HOUGH_GRADIENT,1,20,\
+                                            param1=30,param2=10,minRadius=0,maxRadius=100)  
+        # "No red circles detection" Bug is fixed. 
+        if self.red_circles is None:
+            print('No red circle is detected!')
+            return 
+        return self.red_circles[0][0] 
