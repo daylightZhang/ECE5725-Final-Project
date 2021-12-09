@@ -10,7 +10,7 @@ from HardDriver.motor import Motor
 from HardDriver.pi_camera import Camera
 from HardDriver.pump import Pump
 import time
-import math
+import json
 
 
 motor = Motor()                                               # initialize the step motor 
@@ -24,9 +24,46 @@ calibrate_threshold = 1.5                                     # threadhold value
 flag_controller = {'calibrate_flag':False,'calibrate_check_flag':False,\
                    'identify_flag':False,'turn_to_AI':False,\
                    'move_piece_flag':False,'human_finish_step':False}
+"""
+    the logic of the main program is as follow:
+    
+    initialization:
+        calibrate_flag = False
+        calibrate_check_flag = False
+        identify_flag = False           (not used) 
+        human_finish_step = False 
+        identify_finished_flag = False  (written in info.json)
+        ai_think_finshed_flag = False  (written in info.json)
+    
+    begin: 
+        wait human_finish_step to become True (triggered by physical button)
+        
+        if human_finish_step is True
+            identify_black_chess()
+            
+        wait identify_finished_flag to become True (triggered by function identify_black_chess())
+        
+        if identify_finished_flag is True 
+            display and generate AI step (Show in Pygame)
+            
+        wait ai_think_finshed_flag to become True (triggered by GUI.py)
 
-# def run_goBang():
-#     goBangGUI.run()
+        if ai_think_finshed_flag is True 
+            read the new_position from info.json
+            ai_think_finshed_flag = False 
+            move chess piece to the target position  (start with a thread)
+        
+        wait calibrate_flag to become True 
+        
+        if calibrate_flag is True 
+            calibrate()
+            calibrate_check_flag = True 
+        
+        if calibrate_check_flag is True 
+            calibrate_check() 
+            calibrate_flag = True if the error is acceptable, otherwise False 
+        
+"""
 
 class White(object):
     def __init__(self):
@@ -90,8 +127,24 @@ def calibrate_check():
         motor.cur_coordinate = motor.origin_coordinate
         print("calibrate succeeded")
         print('check_dx = ',check_dx,' check_dy = ',check_dy)
+        flag_controller['calibration_finished_flag'] = True   # means picker has been in calibration point 
+                                                              # Now should wait for human 
     flag_controller['calibrate_check_flag'] = False           # after check, disenable
     
+def read(file_name):
+    with open(file_name,'r') as json_file_handle:
+        info = json.load(json_file_handle)
+    return info
+
+def write(file_name,key,value):
+    cur_info = read(file_name)
+    cur_info[key] = value
+    
+    with open(file_name,'w') as json_file_handle:
+        new_info = json.dumps(cur_info)
+        json_file_handle.write(new_info)
+        print('write successed')   
+        
 def btn27_call_back(btn):
     print('button ',btn,' is pressed!')
     flag_controller['identify_flag'] = True # use a physical button to indicate human has finished   
@@ -102,7 +155,8 @@ def identify_black_step():
     gray_img = cv2.cvtColor(resize_img, cv2.COLOR_BGR2GRAY)
     _, black_stones = cv2.threshold(gray_img, 60, 255, cv2.THRESH_BINARY)
     kernel = np.ones((30,30))                                 # a 30x30 all one matrix
-    position = np.zeros((9,9))                                # a 9x9 all zero matirix to indicate the position of black pieces
+    cur_info = read('info.json')
+    cur_black_pos = cur_info['cur_black_pos']                 # current black pieces on the board 
     num_black_stone = 0
     for i in range(9):                                        # 9 rows 
         for j in range(9):                                    # 9 colomns
@@ -110,15 +164,21 @@ def identify_black_step():
             check_matrix = block * kernel
             # print('row:',i,' col:',j,' sum=',check_matrix.sum())
             if check_matrix.sum() <= 150000:
+                if (i+1,j+1) not in cur_black_pos:
+                    new_black_step = (i + 1, j + 1)           # detect new added black pieces 
+                    print('new_black_step = ',new_black_step)
+                    # record the new human(black) step in the info.json
+                    write('info.json','human_new_step',new_black_step)
+                    break
                 num_black_stone += 1
-                position[i][j] = 1                            # 1 indicate black stone 
+                                         
                 print('black stone ','row:',i+1,' col:',j+1,' sum=',check_matrix.sum())
     print('number of black stone is ',num_black_stone)
     
     thread_white = threading.Thread(target=white.play)
     thread_white.start()
     
-    return black_stones 
+    # return num_black_stone 
 
 def place_white_chess(x_position, y_position,multiprocess=False):
     dx_block = x_position - motor.origin_coordinate[0]

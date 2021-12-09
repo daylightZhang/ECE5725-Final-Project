@@ -8,7 +8,7 @@
     Update history:
         1.0 -Add basic variables 
     Last modified:
-        2021.11.4 -add basic content 
+        2021.11.4 -add basic parameters 
 '''
 
 # define the constant here
