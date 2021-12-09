@@ -8,6 +8,8 @@ import RPi.GPIO as GPIO
 import time
 import threading
 from init import read_calibration_data
+import numpy as np
+import math
 
 class Motor(object):
     def __init__(self):
@@ -17,8 +19,13 @@ class Motor(object):
         self.y_axis_pins = [4, 5, 6, 17]
         self.x_axis_pins = [23, 24, 25, 18]
         self.z_axis_pins = [12, 16, 20, 21]
-        self.unit_step= 193 # 186 
-        self.unit_step_z= 34
+        self.unit_step_x = 193
+        self.unit_step_y = 186
+        self.unit_step_z= 62
+        self.unit_pixel = 25
+        self.cur_coordinate = [4,0,1]     # current coordinate [x,y,z]
+        self.origin_coordinate = [4,0,1]   
+        _,self.origin_position_pixel,_ = read_calibration_data() # get the calibration point
 
         # set as output GPIOs
         for pin in self.y_axis_pins:
@@ -40,18 +47,16 @@ class Motor(object):
                    [0, 0, 0, 1],
                    [1, 0, 0, 1], ]
 
-        # self.cur_coordinate = [0,0,0]     # current coordinate [x,y,z]
-        # get the calibration point
-        _,_,self.origin_coordinate = read_calibration_data()
-
+        
     def __del__(self):
         GPIO.cleanup()
 
     def move(self, axis, blocks):
+        print("cur pos=", self.cur_coordinate)
         if axis == 'x':
             pins = self.x_axis_pins
             step = round(abs(blocks) * self.unit_step_x)
-            self.cur_coordinate[0] = self.cur_coordinate[0] + blocks
+            self.cur_coordinate[0] = self.cur_coordinate[0] + blocks * -1
         elif axis == 'y':
             pins = self.y_axis_pins
             step = round(abs(blocks) * self.unit_step_y)
@@ -61,7 +66,6 @@ class Motor(object):
             step = round(abs(blocks) * self.unit_step_z)
             self.cur_coordinate[2] = self.cur_coordinate[2] + blocks
 
-        step = int(step)
         for i in range(step):
             for halfstep in range(8):
                 for pin in range(4):
@@ -70,6 +74,7 @@ class Motor(object):
                     else:
                         GPIO.output(pins[pin], self.seq[7 - halfstep][pin])
                 time.sleep(0.0008)
+        print("cur pos=", self.cur_coordinate)
     
     def move_xy(self,move_distance,is_multiThread=False): # move_distance = [5,7] 5 is for x axis, 7 is for y axis
         if is_multiThread is True:
@@ -118,4 +123,14 @@ class Motor(object):
             self.move_by_step('y',move_step[1])
             # time.sleep(1)
     
+    def move_by_coordinate(self, x_position, y_position):
+        dx_block = x_position - self.cur_coordinate[0]
+        dy_block = y_position - self.cur_coordinate[1]
+        dx_direction = -1 if dx_block > 0 else 1
+        dy_direction = 1 if dy_block > 0 else -1
+        
+        self.move('x', dx_direction * abs(dx_block))
+        time.sleep(0.5)
+        self.move('y', dy_direction * abs(dy_block))
+        time.sleep(0.5)
 

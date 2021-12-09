@@ -13,7 +13,7 @@ class Camera(object):
     def __init__(self):
         self.cap = cv2.VideoCapture(0)                                       # get the video steam 
         self.is_cap_open = self.cap.isOpened()                               # check if the camera is open 
-        self.whole_box, self.chess_box, self.cali_point = \
+        self.whole_box, self.cali_point, self.chess_box = \
                                                     read_calibration_data()  # read the calibration data
         self.red_circles = []                                                # store the red circle
         self.red_lo = np.array([170, 125, 125])                              # lower limit for red color
@@ -25,7 +25,7 @@ class Camera(object):
     
     def camera_update(self):
         ret, self.frame = self.cap.read()
-    
+        self.img_preprocess()
     def get_camera_view(self):
         # ret, self.frame = self.cap.read()
         # if ret is False:
@@ -48,8 +48,8 @@ class Camera(object):
     def get_calibration_point(self):
         return self.cali_point
     
-    def get_whole_area(self):
-        return self.whole_img
+    def get_img(self):
+        return self.img
     
     def get_chessboard_area(self):
         return self.chess_img
@@ -59,10 +59,12 @@ class Camera(object):
   
     def img_preprocess(self):
         self.frame = cv2.resize(self.frame,(960,720))
-        self.whole_img = np.rot90(self.perspective_transform(self.whole_box,self.frame))
+        self.img = np.rot90(self.perspective_transform(self.whole_box,self.frame))
         self.chess_img = np.rot90(self.perspective_transform(self.chess_box,self.frame))
-        # self.grayImg = cv2.cvtColor(self.whole_img, cv2.COLOR_BGR2GRAY)
-        # self.hsvImg = cv2.cvtColor(self.whole_img, cv2.COLOR_BGR2HSV)
+        self.grayImg = cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY)
+        self.hsvImg = cv2.cvtColor(self.img, cv2.COLOR_BGR2HSV)
+        self.red_region = cv2.inRange(self.hsvImg, self.red_lo, self.red_hi)          # filter the red area 
+
         # red_lo = np.array([170, 125, 125])                                  # lower limit for red color
         # red_hi = np.array([179, 255, 255])                                  # higher limit for red color
         # self.red_region = cv2.inRange(self.hsvImg, red_lo, red_hi)          # filter the red area 
@@ -90,17 +92,11 @@ class Camera(object):
         return result_img
     
     def detect_red_circle(self):
-        self.camera_update()
-        self.frame = cv2.resize(self.frame,(960,720))
-        self.whole_img = np.rot90(self.perspective_transform(self.whole_box,self.frame))
-        self.hsvImg = cv2.cvtColor(self.whole_img, cv2.COLOR_BGR2HSV)
-
-        self.red_region = cv2.inRange(self.hsvImg, self.red_lo, self.red_hi)          # filter the red area 
-        self.red_circles = cv2.HoughCircles(self.red_region_1,cv2.HOUGH_GRADIENT,1,20,\
-                                            param1=30,param2=10,minRadius=0,maxRadius=100)  
-       
+        self.camera_update()  
+        self.red_circles = cv2.HoughCircles(self.red_region,cv2.HOUGH_GRADIENT,1,20,\
+                                            param1=30,param2=10,minRadius=0,maxRadius=100)
         # "No red circles detection" Bug is fixed. 
         if self.red_circles is None:
             print('No red circle is detected!')
-            return None
+            return
         return self.red_circles[0][0] 

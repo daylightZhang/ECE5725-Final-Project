@@ -1,35 +1,35 @@
 # main program for the project 
 # Author: Jingkai Zhang (jz544@cornell.edu) and Lanyue Fang (lf355@cornell.edu)
 # Date: 2021.11.29
-import threading
-import RPi.GPIO as GPIO  
-from GoBang.GUI import GoBang_GUI
-from HardDriver.motor import Motor
-import time, datetime
+# import threading
+# import RPi.GPIO as GPIO  
+# from GoBang.GUI import GoBang_GUI
+# from HardDriver.motor import Motor
+# import time, datetime
 
-def GUI_dispaly():
-    GUI = GoBang_GUI()
-    GUI.run()
+# def GUI_dispaly():
+#     GUI = GoBang_GUI()
+#     GUI.run()
 
-def test(c,b):
-    start_time = time.time()
-    while time.time() - start_time < 20:
-        print('c=',c,'d=',b)
-        time.sleep(1)
+# def test(c,b):
+#     start_time = time.time()
+#     while time.time() - start_time < 20:
+#         print('c=',c,'d=',b)
+#         time.sleep(1)
         
-def motor(num):
-    start_time = time.time()
-    while time.time() - start_time < 10:
-        print(num,' is moving !')
-        print(time.time())
-        time.sleep(1)
-def test_motor():
-    m1 = threading.Thread(target=motor,args='1')
-    m2 = threading.Thread(target=motor,args='2')
-    m1.start()
-    m2.start()
-    m1.join()
-    m2.join()
+# def motor(num):
+#     start_time = time.time()
+#     while time.time() - start_time < 10:
+#         print(num,' is moving !')
+#         print(time.time())
+#         time.sleep(1)
+# def test_motor():
+#     m1 = threading.Thread(target=motor,args='1')
+#     m2 = threading.Thread(target=motor,args='2')
+#     m1.start()
+#     m2.start()
+#     m1.join()
+#     m2.join()
 
 def main():
     '''
@@ -75,4 +75,25 @@ def main():
     #     print(json_obj[1])
 
 if __name__ == '__main__':
-    main()
+    import json 
+    file_name = 'info.json'
+    # info = {}
+    # info['human_busy_flag'] = True 
+    # info['ai_busy_flag'] = False 
+    # info['ai_new_step'] = (1,1)
+    # info['human_new_step'] = (2,2)
+    # info['cur_chessboard'] = [(1,2),(3,4)]
+    # json_str = json.dumps(info)
+    # with open(file_name,'w+') as json_file_handle:
+    #     json_file_handle.write(json_str)
+        
+    with open(file_name,'r') as json_file_handle:
+        json_obj = json.load(json_file_handle)
+    
+    print(json_obj)
+    json_obj['human_busy_flag'] = True 
+    json_obj = json.dumps(json_obj)
+    with open(file_name,'w+') as json_file_handle:
+        json_file_handle.write(json_obj)
+    
+    # main()

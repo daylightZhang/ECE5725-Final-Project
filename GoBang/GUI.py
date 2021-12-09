@@ -17,13 +17,15 @@
 '''
 import pygame               # the whole GUI is implemented by pygame
 import math
+import threading 
 # from GoBang.Config import *        # import all constants
 # from GoBang.Rules import *         # import all GoBang Rules
 # from GoBang.gobang_AI import ai
 from Config import *        # import all constants
 from Rules import *         # import all GoBang Rules
 from gobang_AI import ai
-import os 
+import os
+import json
 
 def default_font(font_size=15):
     """
@@ -112,8 +114,6 @@ class Caption(pygame.sprite.Sprite): # inherit from
         """  
         self.surface= self.font.render(TEXT, True,self.color_lib[self.color])
         self.text=TEXT
-        
-
 
 ##
 # @brief pygame button 
@@ -253,7 +253,7 @@ class GoBang_GUI():
         self.TITLE_IMG = pygame.image.load(os.path.join(self.img_path, 'gobang_title.png'))
         # chess pieces 
         # Note: pygame.transform.scale() is faster, but smoothscale() gives better image 
-        self.WHITE_PIECES_IMG = pygame.transform.smoothscale(pygame.image.load(os.path.join(self.img_path, 'white.png')), (50, 50))  # size of chess pieces 
+        self.WHITE_PIECES_IMG = pygame.transform.smoothscale(pygame.image.load(os.path.join(self.img_path, 'white.png')), (50, 50))  
         self.BLACK_PIECES_IMG = pygame.transform.smoothscale(pygame.image.load(os.path.join(self.img_path, 'black.png')), (50, 50))
         self.PIECES_ON_BOARD = list()   # list to store all the position of pieces
         self.WHITE_PIECES_ON_BOARD = list()
@@ -266,12 +266,17 @@ class GoBang_GUI():
         self.BOARD_IMG.fill((240, 200, 0))                           # fill the surface with RGB (240,200,0)
                                             # view the RGB color in https://en.m.fontke.com/tool/rgbschemes/
         # define all the buttons here 
-        self.button_font = default_font(28)
+        self.button_font = default_font(28)                          # set the font size 
         self.piece_font = default_font(35)
         self.piece_font_2 = default_font(15)
         self.quit_button = Button(self.DISPLAY,self.button_font,'Quit','BLACK','WHITE',680,600,False,None)
         self.regret_button = Button(self.DISPLAY,self.button_font,'Wife Button','BLACK','WHITE',630,500,False,None)
         self.last_piece = 1
+        self.file_name = '/home/pi/Desktop/ECE5725_PROJECT/ECE5725-Final-Project/info.json'
+        self.clock = pygame.time.Clock()
+        self.timer = threading.Timer(1,self.read_chessboard)
+        self.timer.start()
+        
         # draw the line on the board 
         for n in range(MARGIN_X, CELL_SIZE * (BOARD_ORDER + 1), CELL_SIZE):  # +1 is because n can reach CELL_SIZE * BOARD_ORDER. Otherwise it cannot
             width = 1
@@ -279,7 +284,27 @@ class GoBang_GUI():
                 width = 2 
             pygame.draw.line(self.BOARD_IMG, (0, 0, 0), (MARGIN_X, n), (BOARD_WIDTH - MARGIN_X, n), width) # screen, color_rgb, start_point, end_point, width
             pygame.draw.line(self.BOARD_IMG, (0, 0, 0), (n, MARGIN_Y), (n, BOARD_HEIGHT - MARGIN_Y), width)
+    
+    def read_chessboard(self):
+        with open(self.file_name,'r') as json_file_handle:
+            json_obj = json.load(json_file_handle)
+        if json_obj['human_busy_flag']: # means human is placing the chess, wait for button press 
+            # no action should be here 
+            pass 
+        else:                           # means human has finished the chess, we should read new human step 
+            with open(self.file_name,'r') as json_file_handle:
+                json_obj = json.load(json_file_handle)
+            json_obj['ai_busy_flag'] = True 
+            cur_info = json_obj              # get the current json file 
+            json_obj = json.dumps(json_obj)
+            with open(self.file_name, 'w+') as json_file_handle:
+                json_file_handle.write(json_obj)
             
+            
+            
+        self.timer = threading.Timer(1,self.read_chessboard)
+        self.timer.start()
+    
     def draw_pieces(self):
         if self.order < 1:  # skip if no piece 
             return 
@@ -369,6 +394,7 @@ class GoBang_GUI():
             # print(CHESS_BOARD[5][8])
         if self.quit_button.is_on_button([mouse_x,mouse_y]):   # if the quit button is pressed 
             self.running = False   # we must set self.running = False, otherwise error with pygame.fill can happen
+            self.timer.cancel()
             pygame.quit()
         if self.regret_button.is_on_button([mouse_x,mouse_y]): # if the regret button is pressed
             black_piece = self.BLACK_PIECES_ON_BOARD.pop()
@@ -440,6 +466,7 @@ class GoBang_GUI():
                 if event.type == pygame.QUIT:
                     self.RUNNING = False
                     pygame.quit()  # exit the game
+            self.clock.tick(10)
 
         
 # for demo test, this part will be moved to the interface in the feature       

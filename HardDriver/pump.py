@@ -14,7 +14,7 @@ class Pump(object):
 
     def __del__(self):
         GPIO.cleanup()
-
+    
     def pick(self,motor):
         motor.move('z', -1)                     # downwards
         time.sleep(1)
