@@ -274,7 +274,7 @@ class GoBang_GUI():
         self.last_piece = 1
         self.file_name = '/home/pi/Desktop/ECE5725_project/ECE5725-Final-Project/info.json'
         self.identify_finished_flag = False                           # flag that is shared with main program
-        self.ai_think_finshed_flag = False                           # flag that is shared with main program 
+        self.ai_think_finished_flag = False                           # flag that is shared with main program 
         self.clock = pygame.time.Clock()
         self.timer = threading.Timer(1,self.read_chessboard)
         self.timer.start()
@@ -435,7 +435,7 @@ class GoBang_GUI():
             self.is_white_turn = True 
             self.is_balck_turn = False
             self.identify_finished_flag = False
-            self.write(self.file_name,'cur_black_pos',self.BLACK_PIECES_ON_BOARD)
+            # self.write(self.file_name,'cur_black_pos',self.BLACK_PIECES_ON_BOARD)
             self.write(self.file_name,'identify_finished_flag',False)
 
     def Robot(self):
@@ -444,7 +444,7 @@ class GoBang_GUI():
         x,y = next_step[0] + 1, next_step[1] + 1
         print('Robot set white pieces here:',x,' ',y)
         self.write(self.file_name,'ai_new_step',(x,y))             # record AI's new step in the info.json 
-        self.write(self.file_name,'ai_think_finshed_flag',True)    # AI has finished thinking
+        self.write(self.file_name,'ai_think_finished_flag',True)    # AI has finished thinking
         self.PIECES_ON_BOARD.append((x,y))
         self.WHITE_PIECES_ON_BOARD.append((x,y))
         self.list3.append((x-1,y-1))

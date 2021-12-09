@@ -11,15 +11,17 @@ from HardDriver.pi_camera import Camera
 from HardDriver.pump import Pump
 import time
 import json
-
+import log
 
 motor = Motor()                                               # initialize the step motor 
 camera = Camera()                                             # initialize the pi camera 
 pump = Pump()                                                 # initialize the pump 
+log = log.Log()
 # goBangGUI = GoBang_GUI()
 K_p = 2                                                       # set the pid control parameter
 calibrate_threshold = 1.5                                     # threadhold value for calibration, small than this will not calibrate 
                                                               # this value is count as pixel, e.g. Now it is 1.5 pixels 
+cur_black_pos = []
 # create a dictionary for flag control
 flag_controller = {'calibrate_flag':False,'calibrate_check_flag':False,\
                    'identify_flag':False,'turn_to_AI':False,\
@@ -73,12 +75,19 @@ class White(object):
     def place(self,x_coordinate, y_coordinate):
         pump.pick(motor)
         motor.move_by_coordinate(x_coordinate, y_coordinate)
+        motor.move('y',(x_coordinate - 5)*0.04)
         pump.release(motor)
+        print('what exeactly goes into move_by_coordinate?')
+        print(motor.origin_coordinate)
         motor.move_by_coordinate(motor.origin_coordinate[0], motor.origin_coordinate[1])
+        # motor.move_by_coordinate(5,-1)
     def play(self):
         # AI calculate where the white chess should be placed, should know black.pieces
         # place the white chess and then go back to the calibration point (motor.origin_coordinate)
-        self.place(0, 9)
+        cur_info = read('info.json')
+        ai_new_step = cur_info['ai_new_step']           # (x,y) starts from (1,1)
+        # print(ai_new_step)
+        self.place(ai_new_step[0],ai_new_step[1])
         # calibrate
         flag_controller['calibrate_flag'] = True
 
@@ -117,6 +126,9 @@ def calibrate(red_circle):
         
 def calibrate_check():
     red_circle = camera.detect_red_circle()
+    if red_circle is None:
+        print('calibration_check does not detect red circle')
+        return 
     check_dx = abs(motor.origin_position_pixel[0] - red_circle[0])
     check_dy = abs(motor.origin_position_pixel[1] - red_circle[1])
     if check_dx > calibrate_threshold or check_dy > calibrate_threshold:
@@ -124,7 +136,13 @@ def calibrate_check():
         print("still need calibrate")
         print('check_dx = ',check_dx,' check_dy = ',check_dy)
     else:
-        motor.cur_coordinate = motor.origin_coordinate
+        motor.cur_coordinate = motor.origin_coordinate.copy()
+        '''
+            Bug
+        '''
+        # motor.set_cur_coordinate(motor.get_origin_coordinate())
+        # print('type=',type(motor.origin_coordinate))
+        # motor.cur_coordinate = [5,-1,1]
         print("calibrate succeeded")
         print('check_dx = ',check_dx,' check_dy = ',check_dy)
         flag_controller['calibration_finished_flag'] = True   # means picker has been in calibration point 
@@ -155,29 +173,26 @@ def identify_black_step():
     gray_img = cv2.cvtColor(resize_img, cv2.COLOR_BGR2GRAY)
     _, black_stones = cv2.threshold(gray_img, 60, 255, cv2.THRESH_BINARY)
     kernel = np.ones((30,30))                                 # a 30x30 all one matrix
-    cur_info = read('info.json')
-    cur_black_pos = cur_info['cur_black_pos']                 # current black pieces on the board 
-    num_black_stone = 0
+    
     for i in range(9):                                        # 9 rows 
         for j in range(9):                                    # 9 colomns
             block = black_stones[i*30:(i+1)*30,j*30:(j+1)*30] # in opencv, we express in this way (y,x)
             check_matrix = block * kernel
             # print('row:',i,' col:',j,' sum=',check_matrix.sum())
             if check_matrix.sum() <= 150000:
-                if (i+1,j+1) not in cur_black_pos:
-                    new_black_step = (i + 1, j + 1)           # detect new added black pieces 
+                if (j+1,i+1) not in cur_black_pos:
+                    new_black_step = (j + 1, i + 1)           # detect new added black pieces 
+                    cur_black_pos.append(new_black_step)
                     print('new_black_step = ',new_black_step)
                     # record the new human(black) step in the info.json
                     write('info.json','human_new_step',new_black_step)
                     break
-                num_black_stone += 1
                                          
                 print('black stone ','row:',i+1,' col:',j+1,' sum=',check_matrix.sum())
-    print('number of black stone is ',num_black_stone)
-    
-    thread_white = threading.Thread(target=white.play)
-    thread_white.start()
-    
+
+    write('info.json','identify_finished_flag',True)
+    # global read_flag_timer
+    # read_flag_timer.start()  # start the timer 
     # return num_black_stone 
 
 def place_white_chess(x_position, y_position,multiprocess=False):
@@ -206,13 +221,35 @@ def place_white_chess(x_position, y_position,multiprocess=False):
                        -1 * dy_direction * abs(dy_block)],True)
     flag_controller['calibrate_flag'] = True                  # start the calibration
 
+def read_ai_finished_flag():
+    global read_flag_timer
+    # print('reading_ai_finished_flag')
+    cur_info = read('info.json')
+    ai_think_finished_flag = cur_info['ai_think_finished_flag']
+    if ai_think_finished_flag:
+        # read_flag_timer.cancel()
+        write('info.json','ai_think_finished_flag',False)
+        thread_white = threading.Thread(target=white.play)
+        thread_white.start()
+    
+    read_flag_timer = threading.Timer(1,read_ai_finished_flag)
+    read_flag_timer.start()
+
+def init_flags():
+    write('info.json','identify_finished_flag',False)
+    write('info.json','ai_think_finished_flag',False)
+
 def main():
+    init_flags()
     RUNNING = True 
     button = 27                                               # set the GPIO for button
     GPIO.setup(button, GPIO.IN, pull_up_down=GPIO.PUD_UP)     # configure the GPIO
     GPIO.add_event_detect(button, GPIO.RISING, \
                           callback=btn27_call_back,\
                             bouncetime=200)                   # dectecting the botton using interrupt
+    global read_flag_timer
+    read_flag_timer = threading.Timer(1,read_ai_finished_flag)
+    read_flag_timer.start()
     # Thread_GoBangGUI = threading.Thread(target=run_goBang)    # display the GUI of goBang
     # Thread_GoBangGUI.setDaemon(True)
     # Thread_GoBangGUI.start()                                  # start the GUI of goBang
@@ -242,8 +279,10 @@ def main():
             '''
             thread_black_stone = threading.Thread(target=identify_black_step)  
             thread_black_stone.start()
-            black_stones = identify_black_step()
-            camera.show('Identified black stones',black_stones)
+            # black_stones = identify_black_step()
+            # camera.show('Identified black stones',black_stones)
+        
+        
         
         # generate AI's step 
         if flag_controller['turn_to_AI']:                     # if turn_to_AI is True
@@ -260,5 +299,12 @@ def main():
         if cv2.waitKey(25) & 0xFF == ord('q'):
             break
 
+    read_flag_timer.cancel()
 if __name__ == '__main__':
-    main()
+    # main()
+    
+    white.place(3,9)
+    time.sleep(5)
+    white.place(5,-1)
+    time.sleep(2)
+    print('test ended!')
