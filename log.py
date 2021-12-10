@@ -1,36 +1,63 @@
 # a simple logging system 
+# Author: Jingkai Zhang 
 # Date: 2021.12.10 
-import json
+
 import datetime 
+import os 
+
 class Log(object):
     def __init__(self):
         super()
-        self.file_path = './system.log'
-        self.logging_str = []
+        time_stamp_for_file = datetime.datetime.now().strftime('%Y-%m-%d')
+        self.file_name = time_stamp_for_file + '_system.log'
+        self.log_file_path = os.path.join('./','logging/')
+        if not os.path.exists(self.log_file_path + self.file_name):
+            if not os.path.exists(self.log_file_path):
+                os.makedirs(self.log_file_path)
+            f = open(self.log_file_path + self.file_name,'w+')
+            f.close()
+            
+        self.info('logging saved in ' + self.log_file_path + self.file_name)
     
     def get_time_stamp(self):
-        return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        # [0:23] means 3 digit in mili seconds, if it is removed, the total digit would be 6.
+        # return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[0:23]
+        return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
     
     def write_log(self,str):
-        with open(self.file_path,'a') as file:
+        with open(self.log_file_path + self.file_name,'a') as file:
             file.write(str)
-    
+            file.close()
     def info(self,content):
-        logging_str = self.get_time_stamp()+' [INFO] ' + content
+        logging_str = self.get_time_stamp()+' [INFO] ' + content + '\n'
         print(logging_str)
         self.write_log(logging_str)
         
     def debug(self,content):
-        logging_str = self.get_time_stamp()+ '[DEBUG] ' + content
+        logging_str = self.get_time_stamp()+ ' [DEBUG] ' + content + '\n'
         print(logging_str)
         self.write_log(logging_str)
         
-    def fetal(self,content):
-        logging_str = self.get_time_stamp()+'[FETAL] ' + content
+    def critical(self,content):
+        logging_str = self.get_time_stamp()+' [CRITICAL] ' + content + '\n'
+        print(logging_str)
+        self.write_log(logging_str)
+        
+    def error(self,content):
+        logging_str = self.get_time_stamp()+' [ERROR] ' + content + '\n'
         print(logging_str)
         self.write_log(logging_str)
     
     def warning(self,content):
-        logging_str = self.get_time_stamp()+'[WARNING] ' + content
+        logging_str = self.get_time_stamp()+' [WARNING] ' + content + '\n'
         print(logging_str)
         self.write_log(logging_str)
+        
+# test part 
+
+if __name__ == '__main__':
+    log = Log()
+    log.info('Works fine')
+    log.warning('Something might be a problem')
+    log.fetal('Something wrong, program terminated!')
+    log.debug('test something')

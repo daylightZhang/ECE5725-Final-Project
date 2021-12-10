@@ -1,0 +1,3 @@
+2021-12-09 19:55:09.731839 [INFO] logging saved in ./logging/2021-12-09_system.log
+2021-12-09 19:55:09.733037 [INFO] GoBang starts now.
+2021-12-09 19:55:09.735979 [CRITICAL] Failed to load Pi Camera, program terminated

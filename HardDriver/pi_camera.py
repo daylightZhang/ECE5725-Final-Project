@@ -26,6 +26,10 @@ class Camera(object):
     def camera_update(self):
         ret, self.frame = self.cap.read()
         self.img_preprocess()
+    
+    def camera_check(self):
+        return self.is_cap_open
+    
     def get_camera_view(self):
         # ret, self.frame = self.cap.read()
         # if ret is False:
@@ -64,16 +68,6 @@ class Camera(object):
         self.grayImg = cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY)
         self.hsvImg = cv2.cvtColor(self.img, cv2.COLOR_BGR2HSV)
         self.red_region = cv2.inRange(self.hsvImg, self.red_lo, self.red_hi)          # filter the red area 
-
-        # red_lo = np.array([170, 125, 125])                                  # lower limit for red color
-        # red_hi = np.array([179, 255, 255])                                  # higher limit for red color
-        # self.red_region = cv2.inRange(self.hsvImg, red_lo, red_hi)          # filter the red area 
-        # kernel_1 = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (4, 4))
-        # kernel_2 = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (15, 15))
-        # self.red_region_1 = cv2.erode(self.red_region, kernel_1)
-        # self.red_region_1 = cv2.dilate(self.red_region_1, kernel_1)
-        # self.red_region_2 = cv2.dilate(self.red_region_1, kernel_2)
-        # self.red_region_2 = cv2.erode(self.red_region_2, kernel_2)
         
     def perspective_transform(self,box,origin_img):
         # get the original width and height
