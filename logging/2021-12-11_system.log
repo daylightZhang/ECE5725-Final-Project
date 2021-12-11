@@ -1,0 +1,13 @@
+2021-12-11 00:43:52.464741 [INFO] In get_func_name, logging saved in ./logging/2021-12-11_system.log
+2021-12-11 00:43:52.465172 [INFO] In get_func_name, GoBang starts now
+2021-12-11 00:43:52.482968 [CRITICAL] In get_func_name, Failed to load Pi Camera, program terminated
+2021-12-11 00:47:02.798345 [INFO] In info, logging saved in ./logging/2021-12-11_system.log
+2021-12-11 00:47:02.837873 [INFO] In info, GoBang starts now
+2021-12-11 00:47:02.840073 [CRITICAL] In critical, Failed to load Pi Camera, program terminated
+2021-12-11 00:48:31.971318 [INFO] In __init__, logging saved in ./logging/2021-12-11_system.log
+2021-12-11 00:48:32.010320 [INFO] In <module>, GoBang starts now
+2021-12-11 00:48:32.012355 [CRITICAL] In critical, Failed to load Pi Camera, program terminated
+2021-12-11 00:51:18.155103 [INFO] logging saved in ./logging/2021-12-11_system.log
+2021-12-11 00:51:18.155532 [INFO] Works fine
+2021-12-11 00:51:18.155846 [WARNING] Something might be a problem
+2021-12-11 00:51:18.156130 [DEBUG] test something

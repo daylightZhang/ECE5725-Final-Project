@@ -4,6 +4,7 @@
 
 import datetime 
 import os 
+import inspect
 
 class Log(object):
     def __init__(self):
@@ -23,6 +24,9 @@ class Log(object):
         # [0:23] means 3 digit in mili seconds, if it is removed, the total digit would be 6.
         # return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[0:23]
         return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
+
+    def get_func_name(self):
+        return inspect.stack()[1][3]
     
     def write_log(self,str):
         with open(self.log_file_path + self.file_name,'a') as file:
@@ -53,11 +57,10 @@ class Log(object):
         print(logging_str)
         self.write_log(logging_str)
         
-# test part 
+# test part
 
 if __name__ == '__main__':
     log = Log()
     log.info('Works fine')
     log.warning('Something might be a problem')
-    log.fetal('Something wrong, program terminated!')
     log.debug('test something')

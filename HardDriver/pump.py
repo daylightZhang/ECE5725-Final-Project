@@ -16,15 +16,15 @@ class Pump(object):
         GPIO.cleanup()
     
     def pick(self,motor):
-        motor.move('z', -1)                     # downwards
+        motor.move('z', -1.5)                     # downwards
         time.sleep(1)
         self.PWM.start(60)
         time.sleep(1)
-        motor.move('z', 1)                      # upwards
+        motor.move('z', 2)                      # upwards
 
     def release(self,motor):     
-        motor.move('z', -1)                     # downwards
+        motor.move('z', -2)                     # downwards
         time.sleep(1)
         self.PWM.stop()
         time.sleep(1)
-        motor.move('z', 1)                      # upwards
+        motor.move('z', 1.5)                      # upwards

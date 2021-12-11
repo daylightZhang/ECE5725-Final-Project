@@ -26,7 +26,10 @@ class Motor(object):
         self.cur_coordinate = [5,-1,1]     # current coordinate [x,y,z]
         self.origin_coordinate = [5,-1,1]   
         _,self.origin_position_pixel,_ = read_calibration_data() # get the calibration point
-
+        self.target_coordinate = [0,0]
+        self.target_position_pixel = [0,0]
+        self.transition_coordinate = [0,0]
+        
         # set as output GPIOs
         for pin in self.y_axis_pins:
             GPIO.setup(pin, GPIO.OUT)
@@ -56,6 +59,14 @@ class Motor(object):
     
     def set_cur_coordinate(self, value):
         self.cur_coordinate = value 
+    
+    def get_transition_coordinate(self):
+        self.transition_coordinate = self.target_coordinate.copy()
+        if self.target_coordinate[0] < 3:
+            self.transition_coordinate[0] = 3
+        if self.target_coordinate[1] > 8:
+            self.transition_coordinate[1] = 8
+        return self.transition_coordinate
     
     def move(self, axis, blocks):
         # print("ori pos",self.origin_coordinate)

@@ -1,0 +1,448 @@
+2021-12-10 12:05:17.564071 [INFO] logging saved in ./logging/2021-12-10_system.log
+2021-12-10 12:05:17.564341 [INFO] GoBang starts now
+2021-12-10 12:05:17.598246 [INFO] Hardware has been initialized successfully.
+2021-12-10 12:05:17.604339 [INFO] Control flags has been initialized
+2021-12-10 12:05:17.628061 [INFO] Start the flag reading timer
+2021-12-10 12:05:39.278639 [INFO] Main program ended
+2021-12-10 13:42:54.821675 [INFO] logging saved in ./logging/2021-12-10_system.log
+2021-12-10 13:42:54.822223 [INFO] GoBang starts now
+2021-12-10 13:42:54.842902 [INFO] Hardware has been initialized successfully.
+2021-12-10 13:42:54.847973 [INFO] Control flags has been initialized
+2021-12-10 13:42:54.890170 [INFO] Start the flag reading timer
+2021-12-10 13:42:54.890591 [INFO] waiting for human to place chess stone
+2021-12-10 13:43:01.917496 [INFO] white(AI) has finished thinking
+2021-12-10 13:43:04.870019 [INFO] white(AI) picked up a piece
+2021-12-10 13:43:14.401636 [DEBUG] white(AI) stone has arrived at x-6 y-4
+2021-12-10 13:43:17.327980 [INFO] white(AI) has released the stone
+2021-12-10 13:43:27.000392 [ERROR] Did not detect red circle, calibration failed.
+2021-12-10 13:43:27.145750 [INFO] Coordinate of red circle: x-57.5 y-449.5
+2021-12-10 13:43:27.146800 [INFO] target_pos: x-136y-87 cur_pos: x-57.5y-449.5
+2021-12-10 13:43:34.108607 [INFO] calibration error is still big, continue calibrating
+2021-12-10 13:43:34.109166 [INFO] error_x:78.5 error_y:362.5
+2021-12-10 13:43:34.243460 [INFO] Coordinate of red circle: x-57.5 y-449.5
+2021-12-10 13:43:34.244258 [INFO] target_pos: x-136y-87 cur_pos: x-57.5y-449.5
+2021-12-10 14:36:00.765157 [INFO] logging saved in ./logging/2021-12-10_system.log
+2021-12-10 14:36:00.765619 [INFO] GoBang starts now
+2021-12-10 14:36:00.773391 [INFO] Hardware has been initialized successfully.
+2021-12-10 14:36:00.778563 [INFO] Control flags has been initialized
+2021-12-10 14:36:00.800423 [INFO] Start the flag reading timer
+2021-12-10 14:36:00.801264 [INFO] waiting for human to place chess stone
+2021-12-10 14:36:25.288583 [INFO] Human's turn has finished, now turn to AI
+2021-12-10 14:36:25.331084 [INFO] Identified new black stone position on board: x-1 y-1
+2021-12-10 14:36:25.334439 [INFO] Identified new black stone position on board: x-9 y-4
+2021-12-10 14:36:25.337054 [INFO] Identified new black stone position on board: x-8 y-5
+2021-12-10 14:36:25.340969 [INFO] Identified new black stone position on board: x-1 y-9
+2021-12-10 14:36:42.521069 [INFO] Human's turn has finished, now turn to AI
+2021-12-10 14:36:42.593164 [INFO] Identified new black stone position on board: x-9 y-1
+2021-12-10 14:36:42.595310 [INFO] Identified new black stone position on board: x-9 y-2
+2021-12-10 14:36:42.630027 [INFO] Identified new black stone position on board: x-8 y-3
+2021-12-10 14:36:42.631858 [INFO] Identified new black stone position on board: x-7 y-4
+2021-12-10 14:36:42.633506 [INFO] Identified new black stone position on board: x-6 y-5
+2021-12-10 14:36:42.636250 [INFO] Identified new black stone position on board: x-6 y-6
+2021-12-10 14:36:42.639450 [INFO] Identified new black stone position on board: x-5 y-7
+2021-12-10 14:41:31.345791 [INFO] logging saved in ./logging/2021-12-10_system.log
+2021-12-10 14:41:31.346156 [INFO] GoBang starts now
+2021-12-10 14:41:31.353898 [INFO] Hardware has been initialized successfully.
+2021-12-10 14:41:31.358217 [INFO] Control flags has been initialized
+2021-12-10 14:41:31.379844 [INFO] Start the flag reading timer
+2021-12-10 14:41:31.380766 [INFO] waiting for human to place chess stone
+2021-12-10 14:41:42.934025 [INFO] logging saved in ./logging/2021-12-10_system.log
+2021-12-10 14:41:42.934330 [INFO] GoBang starts now
+2021-12-10 14:41:42.943184 [INFO] Hardware has been initialized successfully.
+2021-12-10 14:41:42.947401 [INFO] Control flags has been initialized
+2021-12-10 14:41:42.969656 [INFO] Start the flag reading timer
+2021-12-10 14:41:42.970509 [INFO] waiting for human to place chess stone
+2021-12-10 14:41:47.627294 [INFO] Main program ended
+2021-12-10 17:13:07.476857 [INFO] logging saved in ./logging/2021-12-10_system.log
+2021-12-10 17:13:07.477177 [INFO] GoBang starts now
+2021-12-10 17:13:07.485178 [INFO] Hardware has been initialized successfully.
+2021-12-10 17:13:46.160219 [INFO] logging saved in ./logging/2021-12-10_system.log
+2021-12-10 17:13:46.160533 [INFO] GoBang starts now
+2021-12-10 17:13:46.168341 [INFO] Hardware has been initialized successfully.
+2021-12-10 17:13:46.168923 [INFO] calibration points have been loaded
+2021-12-10 17:13:46.173492 [INFO] Control flags has been initialized
+2021-12-10 17:13:46.195923 [INFO] Start the flag reading timer
+2021-12-10 17:13:46.196845 [INFO] waiting for human to place chess stone
+2021-12-10 17:14:00.888088 [INFO] Main program ended
+2021-12-10 17:15:25.869253 [INFO] logging saved in ./logging/2021-12-10_system.log
+2021-12-10 17:15:25.869706 [INFO] GoBang starts now
+2021-12-10 17:15:25.879386 [INFO] Hardware has been initialized successfully.
+2021-12-10 17:15:25.880304 [INFO] calibration points have been loaded
+2021-12-10 17:15:25.885021 [INFO] Control flags has been initialized
+2021-12-10 17:15:25.912683 [INFO] Start the flag reading timer
+2021-12-10 17:15:25.913089 [INFO] waiting for human to place chess stone
+2021-12-10 17:15:33.520415 [INFO] Human's turn has finished, now turn to AI
+2021-12-10 17:15:33.614883 [INFO] Identified new black stone position on board: x-2 y-3
+2021-12-10 17:15:34.933157 [INFO] white(AI) has finished thinking
+2021-12-10 17:15:54.570222 [INFO] Main program ended
+2021-12-10 17:18:33.433731 [INFO] logging saved in ./logging/2021-12-10_system.log
+2021-12-10 17:18:33.434032 [INFO] GoBang starts now
+2021-12-10 17:18:33.442026 [INFO] Hardware has been initialized successfully.
+2021-12-10 17:18:33.442624 [INFO] calibration points have been loaded
+2021-12-10 17:18:33.446967 [INFO] Control flags has been initialized
+2021-12-10 17:18:33.475214 [INFO] Start the flag reading timer
+2021-12-10 17:18:33.475622 [INFO] waiting for human to place chess stone
+2021-12-10 17:18:36.819722 [INFO] Human's turn has finished, now turn to AI
+2021-12-10 17:18:36.836660 [INFO] Identified new black stone position on board: x-2 y-3
+2021-12-10 17:18:37.477227 [INFO] white(AI) has finished thinking
+2021-12-10 17:18:37.479309 [DEBUG] tar_coor_str = (3,4)
+2021-12-10 17:18:41.136572 [INFO] white(AI) picked up a piece
+2021-12-10 17:18:53.454706 [INFO] Main program ended
+2021-12-10 17:20:15.624502 [INFO] logging saved in ./logging/2021-12-10_system.log
+2021-12-10 17:20:15.625381 [INFO] GoBang starts now
+2021-12-10 17:20:15.635123 [INFO] Hardware has been initialized successfully.
+2021-12-10 17:20:15.639207 [INFO] calibration points have been loaded
+2021-12-10 17:20:15.644546 [INFO] Control flags has been initialized
+2021-12-10 17:20:15.680204 [INFO] Start the flag reading timer
+2021-12-10 17:20:15.681377 [INFO] waiting for human to place chess stone
+2021-12-10 17:20:21.404873 [INFO] Human's turn has finished, now turn to AI
+2021-12-10 17:20:21.443709 [INFO] Identified new black stone position on board: x-2 y-3
+2021-12-10 17:20:22.712616 [INFO] white(AI) has finished thinking
+2021-12-10 17:20:22.720327 [DEBUG] tar_coor_str = (3,4)
+2021-12-10 17:20:26.481280 [INFO] white(AI) picked up a piece
+2021-12-10 17:20:37.715794 [INFO] Coordinate of red circle: x-72.5 y-259.5
+2021-12-10 17:20:37.716894 [INFO] target_pos: x-69.5 y-265.5 cur_pos: x-72.5 y-259.5
+2021-12-10 17:20:37.967853 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:20:37.968678 [INFO] error_x:3.0 error_y:6.0
+2021-12-10 17:20:38.122847 [INFO] Coordinate of red circle: x-72.5 y-259.5
+2021-12-10 17:20:38.128934 [INFO] target_pos: x-69.5 y-265.5 cur_pos: x-72.5 y-259.5
+2021-12-10 17:20:38.375022 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:20:38.375594 [INFO] error_x:1.0 error_y:3.0
+2021-12-10 17:20:38.530580 [INFO] Coordinate of red circle: x-70.5 y-262.5
+2021-12-10 17:20:38.531494 [INFO] target_pos: x-69.5 y-265.5 cur_pos: x-70.5 y-262.5
+2021-12-10 17:20:38.689785 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:20:38.690466 [INFO] error_x:0.0 error_y:2.0
+2021-12-10 17:20:38.852626 [INFO] Coordinate of red circle: x-70.5 y-266.5
+2021-12-10 17:20:38.856217 [INFO] target_pos: x-69.5 y-265.5 cur_pos: x-70.5 y-266.5
+2021-12-10 17:20:39.017694 [INFO] calibration succeed
+2021-12-10 17:20:39.018325 [DEBUG] white(AI) stone has arrived at x-3 y-4
+2021-12-10 17:20:42.687511 [INFO] white(AI) has released the stone
+2021-12-10 17:20:53.912766 [INFO] Coordinate of red circle: x-131.5 y-102.5
+2021-12-10 17:20:53.916179 [INFO] target_pos: x-1 y-1 cur_pos: x-131.5 y-102.5
+2021-12-10 17:20:57.524127 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:20:57.524620 [INFO] error_x:88.5 error_y:75.5
+2021-12-10 17:20:57.696014 [INFO] Coordinate of red circle: x-88.5 y-72.5
+2021-12-10 17:20:57.696913 [INFO] target_pos: x-1 y-1 cur_pos: x-88.5 y-72.5
+2021-12-10 17:21:00.297630 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:21:00.298445 [INFO] error_x:60.5 error_y:53.5
+2021-12-10 17:21:00.464678 [INFO] Coordinate of red circle: x-62.5 y-53.5
+2021-12-10 17:21:00.465555 [INFO] target_pos: x-1 y-1 cur_pos: x-62.5 y-53.5
+2021-12-10 17:21:02.379825 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:21:02.380532 [INFO] error_x:44.5 error_y:48.5
+2021-12-10 17:21:02.548961 [INFO] Coordinate of red circle: x-45.5 y-54.5
+2021-12-10 17:21:02.549484 [INFO] target_pos: x-1 y-1 cur_pos: x-45.5 y-54.5
+2021-12-10 17:21:04.206609 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:21:04.207277 [INFO] error_x:29.5 error_y:50.5
+2021-12-10 17:21:04.354098 [INFO] Coordinate of red circle: x-30.5 y-51.5
+2021-12-10 17:21:04.354878 [INFO] target_pos: x-1 y-1 cur_pos: x-30.5 y-51.5
+2021-12-10 17:21:05.713236 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:21:05.713816 [INFO] error_x:19.5 error_y:47.5
+2021-12-10 17:21:05.882600 [INFO] Coordinate of red circle: x-21.5 y-49.5
+2021-12-10 17:21:05.890537 [INFO] target_pos: x-1 y-1 cur_pos: x-21.5 y-49.5
+2021-12-10 17:21:06.614752 [INFO] Main program ended
+2021-12-10 17:32:24.255787 [INFO] logging saved in ./logging/2021-12-10_system.log
+2021-12-10 17:32:24.256238 [INFO] GoBang starts now
+2021-12-10 17:32:24.267127 [INFO] Hardware has been initialized successfully.
+2021-12-10 17:32:24.267981 [INFO] calibration points have been loaded
+2021-12-10 17:32:24.273010 [INFO] Control flags has been initialized
+2021-12-10 17:32:24.306930 [INFO] Start the flag reading timer
+2021-12-10 17:32:24.307750 [INFO] waiting for human to place chess stone
+2021-12-10 17:32:29.545768 [INFO] Main program ended
+2021-12-10 17:33:31.397297 [INFO] logging saved in ./logging/2021-12-10_system.log
+2021-12-10 17:33:31.398889 [INFO] GoBang starts now
+2021-12-10 17:33:31.416551 [INFO] Hardware has been initialized successfully.
+2021-12-10 17:33:31.417759 [INFO] calibration points have been loaded
+2021-12-10 17:33:31.425040 [INFO] Control flags has been initialized
+2021-12-10 17:33:31.468013 [INFO] Start the flag reading timer
+2021-12-10 17:33:31.468891 [INFO] waiting for human to place chess stone
+2021-12-10 17:33:33.309698 [INFO] Human's turn has finished, now turn to AI
+2021-12-10 17:33:33.335608 [INFO] Identified new black stone position on board: x-2 y-3
+2021-12-10 17:33:34.494024 [INFO] white(AI) has finished thinking
+2021-12-10 17:33:34.516308 [DEBUG] tar_coor_str = (3,4)
+2021-12-10 17:33:38.221413 [INFO] white(AI) picked up a piece
+2021-12-10 17:33:49.446617 [INFO] Coordinate of red circle: x-76.5 y-257.5
+2021-12-10 17:33:49.449506 [INFO] target_pos: x-69.5 y-265.5 cur_pos: x-76.5 y-257.5
+2021-12-10 17:33:49.753966 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:33:49.754350 [INFO] error_x:3.0 error_y:11.0
+2021-12-10 17:33:49.913155 [INFO] Coordinate of red circle: x-72.5 y-257.5
+2021-12-10 17:33:49.914267 [INFO] target_pos: x-69.5 y-265.5 cur_pos: x-72.5 y-257.5
+2021-12-10 17:33:50.227190 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:33:50.227881 [INFO] error_x:2.0 error_y:7.0
+2021-12-10 17:33:50.384152 [INFO] Coordinate of red circle: x-71.5 y-258.5
+2021-12-10 17:33:50.387051 [INFO] target_pos: x-69.5 y-265.5 cur_pos: x-71.5 y-258.5
+2021-12-10 17:33:50.622290 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:33:50.622673 [INFO] error_x:1.0 error_y:3.0
+2021-12-10 17:33:50.808741 [INFO] Coordinate of red circle: x-70.5 y-262.5
+2021-12-10 17:33:50.809872 [INFO] target_pos: x-69.5 y-265.5 cur_pos: x-70.5 y-262.5
+2021-12-10 17:33:50.957886 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:33:50.958363 [INFO] error_x:0.0 error_y:4.0
+2021-12-10 17:33:51.120199 [INFO] Coordinate of red circle: x-69.5 y-264.5
+2021-12-10 17:33:51.120813 [INFO] target_pos: x-69.5 y-265.5 cur_pos: x-69.5 y-264.5
+2021-12-10 17:33:51.269853 [INFO] calibration succeed
+2021-12-10 17:33:51.278918 [DEBUG] white(AI) stone has arrived at x-3 y-4
+2021-12-10 17:33:54.979816 [INFO] white(AI) has released the stone
+2021-12-10 17:33:54.980508 [DEBUG] origin coordinate:5 -1
+2021-12-10 17:34:06.187161 [INFO] Coordinate of red circle: x-134.5 y-95.5
+2021-12-10 17:34:06.188380 [INFO] target_pos: x-1 y-1 cur_pos: x-134.5 y-95.5
+2021-12-10 17:34:09.935233 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:34:09.935868 [INFO] error_x:90.5 error_y:73.5
+2021-12-10 17:34:10.094500 [INFO] Coordinate of red circle: x-93.5 y-68.5
+2021-12-10 17:34:10.095074 [INFO] target_pos: x-1 y-1 cur_pos: x-93.5 y-68.5
+2021-12-10 17:34:12.734573 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:34:12.734960 [INFO] error_x:62.5 error_y:52.5
+2021-12-10 17:34:12.882749 [INFO] Coordinate of red circle: x-62.5 y-54.5
+2021-12-10 17:34:12.883762 [INFO] target_pos: x-1 y-1 cur_pos: x-62.5 y-54.5
+2021-12-10 17:34:14.822081 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:34:14.822624 [INFO] error_x:40.5 error_y:48.5
+2021-12-10 17:34:14.966661 [INFO] Coordinate of red circle: x-42.5 y-48.5
+2021-12-10 17:34:14.967432 [INFO] target_pos: x-1 y-1 cur_pos: x-42.5 y-48.5
+2021-12-10 17:34:16.511900 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:34:16.512518 [INFO] error_x:25.5 error_y:48.5
+2021-12-10 17:34:16.698001 [INFO] Coordinate of red circle: x-26.5 y-49.5
+2021-12-10 17:34:16.698676 [INFO] target_pos: x-1 y-1 cur_pos: x-26.5 y-49.5
+2021-12-10 17:34:16.916944 [INFO] Main program ended
+2021-12-10 17:38:12.249812 [INFO] logging saved in ./logging/2021-12-10_system.log
+2021-12-10 17:38:12.250230 [INFO] GoBang starts now
+2021-12-10 17:38:12.258179 [INFO] Hardware has been initialized successfully.
+2021-12-10 17:38:12.258881 [INFO] calibration points have been loaded
+2021-12-10 17:38:12.263292 [INFO] Control flags has been initialized
+2021-12-10 17:38:12.284891 [INFO] Start the flag reading timer
+2021-12-10 17:38:12.285517 [INFO] waiting for human to place chess stone
+2021-12-10 17:38:15.804937 [INFO] Human's turn has finished, now turn to AI
+2021-12-10 17:38:15.841680 [INFO] Identified new black stone position on board: x-2 y-3
+2021-12-10 17:38:26.904815 [INFO] Main program ended
+2021-12-10 17:38:31.568582 [INFO] logging saved in ./logging/2021-12-10_system.log
+2021-12-10 17:38:31.569859 [INFO] GoBang starts now
+2021-12-10 17:38:31.583922 [INFO] Hardware has been initialized successfully.
+2021-12-10 17:38:31.585017 [INFO] calibration points have been loaded
+2021-12-10 17:38:31.594739 [INFO] Control flags has been initialized
+2021-12-10 17:38:31.616737 [INFO] Start the flag reading timer
+2021-12-10 17:38:31.617293 [INFO] waiting for human to place chess stone
+2021-12-10 17:38:36.826361 [INFO] Human's turn has finished, now turn to AI
+2021-12-10 17:38:36.910676 [INFO] Identified new black stone position on board: x-2 y-3
+2021-12-10 17:38:37.627536 [INFO] white(AI) has finished thinking
+2021-12-10 17:38:37.630338 [DEBUG] tar_coor_str = (3,4)
+2021-12-10 17:38:41.300364 [INFO] white(AI) picked up a piece
+2021-12-10 17:38:52.618430 [INFO] Coordinate of red circle: x-76.5 y-251.5
+2021-12-10 17:38:52.621002 [INFO] target_pos: x-69.5 y-265.5 cur_pos: x-76.5 y-251.5
+2021-12-10 17:38:53.042275 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:38:53.042838 [INFO] error_x:7.0 error_y:14.0
+2021-12-10 17:38:53.199447 [INFO] Coordinate of red circle: x-74.5 y-252.5
+2021-12-10 17:38:53.200185 [INFO] target_pos: x-69.5 y-265.5 cur_pos: x-74.5 y-252.5
+2021-12-10 17:38:53.602450 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:38:53.602868 [INFO] error_x:4.0 error_y:8.0
+2021-12-10 17:38:53.753025 [INFO] Coordinate of red circle: x-71.5 y-257.5
+2021-12-10 17:38:53.753838 [INFO] target_pos: x-69.5 y-265.5 cur_pos: x-71.5 y-257.5
+2021-12-10 17:38:54.053880 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:38:54.054383 [INFO] error_x:1.0 error_y:5.0
+2021-12-10 17:38:54.209817 [INFO] Coordinate of red circle: x-70.5 y-259.5
+2021-12-10 17:38:54.210402 [INFO] target_pos: x-69.5 y-265.5 cur_pos: x-70.5 y-259.5
+2021-12-10 17:38:54.496263 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:38:54.496811 [INFO] error_x:1.0 error_y:3.0
+2021-12-10 17:38:54.636443 [INFO] Coordinate of red circle: x-73.5 y-262.5
+2021-12-10 17:38:54.640680 [INFO] target_pos: x-69.5 y-265.5 cur_pos: x-73.5 y-262.5
+2021-12-10 17:38:54.899531 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:38:54.900178 [INFO] error_x:3.0 error_y:1.0
+2021-12-10 17:38:55.032914 [INFO] Coordinate of red circle: x-72.5 y-266.5
+2021-12-10 17:38:55.035179 [INFO] target_pos: x-69.5 y-265.5 cur_pos: x-72.5 y-266.5
+2021-12-10 17:38:55.179687 [INFO] calibration succeed
+2021-12-10 17:38:55.182435 [DEBUG] white(AI) stone has arrived at x-3 y-4
+2021-12-10 17:38:58.820342 [INFO] white(AI) has released the stone
+2021-12-10 17:38:58.821144 [DEBUG] origin coordinate:5 -1
+2021-12-10 17:39:10.097790 [INFO] Coordinate of red circle: x-134.5 y-104.5
+2021-12-10 17:39:10.098657 [INFO] target_pos: x-140 y-96 cur_pos: x-134.5 y-104.5
+2021-12-10 17:39:10.442091 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:39:10.442747 [INFO] error_x:2.5 error_y:9.5
+2021-12-10 17:39:10.590223 [INFO] Coordinate of red circle: x-136.5 y-104.5
+2021-12-10 17:39:10.593925 [INFO] target_pos: x-140 y-96 cur_pos: x-136.5 y-104.5
+2021-12-10 17:39:10.901311 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:39:10.901827 [INFO] error_x:2.5 error_y:7.5
+2021-12-10 17:39:11.076042 [INFO] Coordinate of red circle: x-138.5 y-102.5
+2021-12-10 17:39:11.076914 [INFO] target_pos: x-140 y-96 cur_pos: x-138.5 y-102.5
+2021-12-10 17:39:11.317967 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:39:11.318647 [INFO] error_x:2.5 error_y:3.5
+2021-12-10 17:39:11.475027 [INFO] Coordinate of red circle: x-136.5 y-98.5
+2021-12-10 17:39:11.476047 [INFO] target_pos: x-140 y-96 cur_pos: x-136.5 y-98.5
+2021-12-10 17:39:11.732492 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:39:11.733603 [INFO] error_x:2.5 error_y:1.5
+2021-12-10 17:39:11.891657 [INFO] Coordinate of red circle: x-139.5 y-95.5
+2021-12-10 17:39:11.892675 [INFO] target_pos: x-140 y-96 cur_pos: x-139.5 y-95.5
+2021-12-10 17:39:12.031402 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:39:12.032663 [INFO] error_x:2.5 error_y:0.5
+2021-12-10 17:39:12.191449 [INFO] Coordinate of red circle: x-138.5 y-97.5
+2021-12-10 17:39:12.192316 [INFO] target_pos: x-140 y-96 cur_pos: x-138.5 y-97.5
+2021-12-10 17:39:12.344344 [INFO] calibration succeed
+2021-12-10 17:39:12.345025 [INFO] waiting for human to place chess stone
+2021-12-10 17:39:28.918143 [INFO] Human's turn has finished, now turn to AI
+2021-12-10 17:39:29.006380 [INFO] Identified new black stone position on board: x-1 y-4
+2021-12-10 17:39:29.782199 [INFO] white(AI) has finished thinking
+2021-12-10 17:39:29.785113 [DEBUG] tar_coor_str = (3,2)
+2021-12-10 17:39:33.500519 [INFO] white(AI) picked up a piece
+2021-12-10 17:39:41.974237 [INFO] Coordinate of red circle: x-81.5 y-196.5
+2021-12-10 17:39:41.975188 [INFO] target_pos: x-70 y-196 cur_pos: x-81.5 y-196.5
+2021-12-10 17:39:42.289387 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:39:42.289933 [INFO] error_x:11.5 error_y:0.5
+2021-12-10 17:39:42.481924 [INFO] Coordinate of red circle: x-81.5 y-196.5
+2021-12-10 17:39:42.482476 [INFO] target_pos: x-70 y-196 cur_pos: x-81.5 y-196.5
+2021-12-10 17:39:42.812046 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:39:42.812494 [INFO] error_x:7.5 error_y:0.5
+2021-12-10 17:39:42.970487 [INFO] Coordinate of red circle: x-77.5 y-197.5
+2021-12-10 17:39:42.972003 [INFO] target_pos: x-70 y-196 cur_pos: x-77.5 y-197.5
+2021-12-10 17:39:43.284219 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:39:43.284736 [INFO] error_x:4.5 error_y:0.5
+2021-12-10 17:39:43.474221 [INFO] Coordinate of red circle: x-73.5 y-196.5
+2021-12-10 17:39:43.475022 [INFO] target_pos: x-70 y-196 cur_pos: x-73.5 y-196.5
+2021-12-10 17:39:43.628931 [INFO] calibration succeed
+2021-12-10 17:39:43.637183 [DEBUG] white(AI) stone has arrived at x-3 y-2
+2021-12-10 17:39:47.363211 [INFO] white(AI) has released the stone
+2021-12-10 17:39:47.364694 [DEBUG] origin coordinate:5 -1
+2021-12-10 17:39:55.682844 [INFO] Coordinate of red circle: x-137.5 y-92.5
+2021-12-10 17:39:55.684885 [INFO] target_pos: x-140 y-96 cur_pos: x-137.5 y-92.5
+2021-12-10 17:39:55.899569 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:39:55.899944 [INFO] error_x:2.5 error_y:3.5
+2021-12-10 17:39:56.032108 [INFO] Coordinate of red circle: x-135.5 y-92.5
+2021-12-10 17:39:56.034337 [INFO] target_pos: x-140 y-96 cur_pos: x-135.5 y-92.5
+2021-12-10 17:39:56.256864 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:39:56.257539 [INFO] error_x:2.5 error_y:2.5
+2021-12-10 17:39:56.413157 [INFO] Coordinate of red circle: x-137.5 y-93.5
+2021-12-10 17:39:56.414035 [INFO] target_pos: x-140 y-96 cur_pos: x-137.5 y-93.5
+2021-12-10 17:39:56.634985 [INFO] calibration succeed
+2021-12-10 17:39:56.635607 [INFO] waiting for human to place chess stone
+2021-12-10 17:40:18.239383 [INFO] Human's turn has finished, now turn to AI
+2021-12-10 17:40:18.304938 [INFO] Identified new black stone position on board: x-1 y-5
+2021-12-10 17:40:18.895725 [INFO] white(AI) has finished thinking
+2021-12-10 17:40:18.898524 [DEBUG] tar_coor_str = (1,3)
+2021-12-10 17:40:22.659520 [INFO] white(AI) picked up a piece
+2021-12-10 17:40:32.469795 [INFO] Coordinate of red circle: x-81.5 y-219.5
+2021-12-10 17:40:32.470428 [INFO] target_pos: x-70.5 y-229.5 cur_pos: x-81.5 y-219.5
+2021-12-10 17:40:32.906328 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:40:32.907094 [INFO] error_x:11.0 error_y:10.0
+2021-12-10 17:40:33.071000 [INFO] Coordinate of red circle: x-79.5 y-220.5
+2021-12-10 17:40:33.072022 [INFO] target_pos: x-70.5 y-229.5 cur_pos: x-79.5 y-220.5
+2021-12-10 17:40:33.439871 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:40:33.440379 [INFO] error_x:9.0 error_y:6.0
+2021-12-10 17:40:33.614161 [INFO] Coordinate of red circle: x-80.5 y-220.5
+2021-12-10 17:40:33.614896 [INFO] target_pos: x-70.5 y-229.5 cur_pos: x-80.5 y-220.5
+2021-12-10 17:40:34.028963 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:40:34.029581 [INFO] error_x:6.0 error_y:4.0
+2021-12-10 17:40:34.180368 [INFO] Coordinate of red circle: x-76.5 y-225.5
+2021-12-10 17:40:34.181228 [INFO] target_pos: x-70.5 y-229.5 cur_pos: x-76.5 y-225.5
+2021-12-10 17:40:34.423362 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:40:34.424144 [INFO] error_x:3.0 error_y:0.0
+2021-12-10 17:40:34.572502 [INFO] Coordinate of red circle: x-74.5 y-227.5
+2021-12-10 17:40:34.573395 [INFO] target_pos: x-70.5 y-229.5 cur_pos: x-74.5 y-227.5
+2021-12-10 17:40:34.815217 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:40:34.815852 [INFO] error_x:3.0 error_y:0.0
+2021-12-10 17:40:34.976960 [INFO] Coordinate of red circle: x-74.5 y-230.5
+2021-12-10 17:40:34.977616 [INFO] target_pos: x-70.5 y-229.5 cur_pos: x-74.5 y-230.5
+2021-12-10 17:40:35.195081 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:40:35.196225 [INFO] error_x:1.0 error_y:2.0
+2021-12-10 17:40:35.350580 [INFO] Coordinate of red circle: x-71.5 y-231.5
+2021-12-10 17:40:35.351313 [INFO] target_pos: x-70.5 y-229.5 cur_pos: x-71.5 y-231.5
+2021-12-10 17:40:35.539598 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:40:35.540429 [INFO] error_x:0.0 error_y:2.0
+2021-12-10 17:40:35.690714 [INFO] Coordinate of red circle: x-70.5 y-231.5
+2021-12-10 17:40:35.695208 [INFO] target_pos: x-70.5 y-229.5 cur_pos: x-70.5 y-231.5
+2021-12-10 17:40:35.849173 [INFO] calibration succeed
+2021-12-10 17:40:39.922529 [DEBUG] white(AI) stone has arrived at x-1 y-3
+2021-12-10 17:40:43.620218 [INFO] white(AI) has released the stone
+2021-12-10 17:40:43.620820 [DEBUG] origin coordinate:5 -1
+2021-12-10 17:40:56.445841 [INFO] Coordinate of red circle: x-142.5 y-97.5
+2021-12-10 17:40:56.446598 [INFO] target_pos: x-140 y-96 cur_pos: x-142.5 y-97.5
+2021-12-10 17:40:56.596600 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:40:56.597506 [INFO] error_x:3.5 error_y:1.5
+2021-12-10 17:40:56.745289 [INFO] Coordinate of red circle: x-142.5 y-98.5
+2021-12-10 17:40:56.747154 [INFO] target_pos: x-140 y-96 cur_pos: x-142.5 y-98.5
+2021-12-10 17:40:56.977563 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:40:56.978330 [INFO] error_x:3.5 error_y:0.5
+2021-12-10 17:40:57.126866 [INFO] Coordinate of red circle: x-143.5 y-96.5
+2021-12-10 17:40:57.130970 [INFO] target_pos: x-140 y-96 cur_pos: x-143.5 y-96.5
+2021-12-10 17:40:57.318100 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:40:57.318700 [INFO] error_x:2.5 error_y:1.5
+2021-12-10 17:40:57.493144 [INFO] Coordinate of red circle: x-142.5 y-97.5
+2021-12-10 17:40:57.495579 [INFO] target_pos: x-140 y-96 cur_pos: x-142.5 y-97.5
+2021-12-10 17:40:57.635658 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:40:57.636431 [INFO] error_x:1.5 error_y:2.5
+2021-12-10 17:40:57.785367 [INFO] Coordinate of red circle: x-141.5 y-96.5
+2021-12-10 17:40:57.788273 [INFO] target_pos: x-140 y-96 cur_pos: x-141.5 y-96.5
+2021-12-10 17:40:57.931860 [INFO] calibration succeed
+2021-12-10 17:40:57.932599 [INFO] waiting for human to place chess stone
+2021-12-10 17:41:15.923138 [INFO] Human's turn has finished, now turn to AI
+2021-12-10 17:41:15.934033 [INFO] Identified new black stone position on board: x-2 y-4
+2021-12-10 17:41:17.016069 [INFO] white(AI) has finished thinking
+2021-12-10 17:41:17.025709 [DEBUG] tar_coor_str = (2,5)
+2021-12-10 17:41:20.681057 [INFO] white(AI) picked up a piece
+2021-12-10 17:41:33.358806 [INFO] Coordinate of red circle: x-77.5 y-291.5
+2021-12-10 17:41:33.359630 [INFO] target_pos: x-68.5 y-300.5 cur_pos: x-77.5 y-291.5
+2021-12-10 17:41:33.800466 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:41:33.801309 [INFO] error_x:9.0 error_y:10.0
+2021-12-10 17:41:33.952569 [INFO] Coordinate of red circle: x-77.5 y-291.5
+2021-12-10 17:41:33.954846 [INFO] target_pos: x-68.5 y-300.5 cur_pos: x-77.5 y-291.5
+2021-12-10 17:41:34.382770 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:41:34.383640 [INFO] error_x:7.0 error_y:6.0
+2021-12-10 17:41:34.545150 [INFO] Coordinate of red circle: x-74.5 y-294.5
+2021-12-10 17:41:34.545683 [INFO] target_pos: x-68.5 y-300.5 cur_pos: x-74.5 y-294.5
+2021-12-10 17:41:34.853247 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:41:34.853648 [INFO] error_x:4.0 error_y:5.0
+2021-12-10 17:41:35.008941 [INFO] Coordinate of red circle: x-72.5 y-298.5
+2021-12-10 17:41:35.010032 [INFO] target_pos: x-68.5 y-300.5 cur_pos: x-72.5 y-298.5
+2021-12-10 17:41:35.174022 [INFO] calibration succeed
+2021-12-10 17:41:37.701614 [DEBUG] white(AI) stone has arrived at x-2 y-5
+2021-12-10 17:41:41.408811 [INFO] white(AI) has released the stone
+2021-12-10 17:41:41.409807 [DEBUG] origin coordinate:5 -1
+2021-12-10 17:41:55.567458 [INFO] Coordinate of red circle: x-145.5 y-104.5
+2021-12-10 17:41:55.569571 [INFO] target_pos: x-140 y-96 cur_pos: x-145.5 y-104.5
+2021-12-10 17:41:55.900341 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:41:55.900959 [INFO] error_x:5.5 error_y:8.5
+2021-12-10 17:41:56.032689 [INFO] Coordinate of red circle: x-144.5 y-102.5
+2021-12-10 17:41:56.035030 [INFO] target_pos: x-140 y-96 cur_pos: x-144.5 y-102.5
+2021-12-10 17:41:56.386355 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:41:56.386917 [INFO] error_x:2.5 error_y:5.5
+2021-12-10 17:41:56.537525 [INFO] Coordinate of red circle: x-142.5 y-99.5
+2021-12-10 17:41:56.538255 [INFO] target_pos: x-140 y-96 cur_pos: x-142.5 y-99.5
+2021-12-10 17:41:56.771138 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:41:56.771760 [INFO] error_x:3.5 error_y:2.5
+2021-12-10 17:41:56.929899 [INFO] Coordinate of red circle: x-142.5 y-99.5
+2021-12-10 17:41:56.931294 [INFO] target_pos: x-140 y-96 cur_pos: x-142.5 y-99.5
+2021-12-10 17:41:57.149124 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:41:57.149942 [INFO] error_x:0.5 error_y:3.5
+2021-12-10 17:41:57.292257 [INFO] Coordinate of red circle: x-141.5 y-98.5
+2021-12-10 17:41:57.292816 [INFO] target_pos: x-140 y-96 cur_pos: x-141.5 y-98.5
+2021-12-10 17:41:57.434917 [INFO] calibration succeed
+2021-12-10 17:41:57.435726 [INFO] waiting for human to place chess stone
+2021-12-10 17:42:15.271942 [INFO] Human's turn has finished, now turn to AI
+2021-12-10 17:42:15.297630 [INFO] Identified new black stone position on board: x-2 y-9
+2021-12-10 17:42:17.210640 [INFO] white(AI) has finished thinking
+2021-12-10 17:42:17.220598 [DEBUG] tar_coor_str = (3,3)
+2021-12-10 17:42:20.894626 [INFO] white(AI) picked up a piece
+2021-12-10 17:42:30.706490 [INFO] Coordinate of red circle: x-74.5 y-223.5
+2021-12-10 17:42:30.707264 [INFO] target_pos: x-70.5 y-229.5 cur_pos: x-74.5 y-223.5
+2021-12-10 17:42:30.943754 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:42:30.946073 [INFO] error_x:6.0 error_y:5.0
+2021-12-10 17:42:31.123765 [INFO] Coordinate of red circle: x-74.5 y-223.5
+2021-12-10 17:42:31.124414 [INFO] target_pos: x-70.5 y-229.5 cur_pos: x-74.5 y-223.5
+2021-12-10 17:42:31.377009 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:42:31.377571 [INFO] error_x:3.0 error_y:3.0
+2021-12-10 17:42:31.541482 [INFO] Coordinate of red circle: x-74.5 y-227.5
+2021-12-10 17:42:31.542021 [INFO] target_pos: x-70.5 y-229.5 cur_pos: x-74.5 y-227.5
+2021-12-10 17:42:31.774972 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:42:31.775522 [INFO] error_x:2.0 error_y:2.0
+2021-12-10 17:42:31.940778 [INFO] Coordinate of red circle: x-72.5 y-228.5
+2021-12-10 17:42:31.941606 [INFO] target_pos: x-70.5 y-229.5 cur_pos: x-72.5 y-228.5
+2021-12-10 17:42:32.110555 [INFO] calibration succeed
+2021-12-10 17:42:32.113401 [DEBUG] white(AI) stone has arrived at x-3 y-3
+2021-12-10 17:42:35.769865 [INFO] white(AI) has released the stone
+2021-12-10 17:42:35.770475 [DEBUG] origin coordinate:5 -1
+2021-12-10 17:42:45.460270 [INFO] Coordinate of red circle: x-133.5 y-94.5
+2021-12-10 17:42:45.465820 [INFO] target_pos: x-140 y-96 cur_pos: x-133.5 y-94.5
+2021-12-10 17:42:45.695350 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:42:45.695752 [INFO] error_x:5.5 error_y:0.5
+2021-12-10 17:42:45.847125 [INFO] Coordinate of red circle: x-133.5 y-94.5
+2021-12-10 17:42:45.847659 [INFO] target_pos: x-140 y-96 cur_pos: x-133.5 y-94.5
+2021-12-10 17:42:46.111983 [INFO] calibration error is still big, continue calibrating
+2021-12-10 17:42:46.112387 [INFO] error_x:3.5 error_y:0.5
+2021-12-10 17:42:46.297781 [INFO] Coordinate of red circle: x-136.5 y-95.5
+2021-12-10 17:42:46.298591 [INFO] target_pos: x-140 y-96 cur_pos: x-136.5 y-95.5
+2021-12-10 17:42:46.471338 [INFO] calibration succeed
+2021-12-10 17:42:46.472013 [INFO] waiting for human to place chess stone
+2021-12-10 17:43:15.176348 [INFO] Main program ended

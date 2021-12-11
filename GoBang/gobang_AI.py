@@ -16,7 +16,7 @@ ROW = COLUMN
 next_point = [0, 0]                            # The next step for AI
 
 ratio = 2                                      # attack ratio
-DEPTH = 1                                      # search depth, if depth is bigger, the running speed will become slower exponentially
+DEPTH = 2                                      # search depth, if depth is bigger, the running speed will become slower exponentially
 
                                                # Score for different situation
 shape_score = [(50, (0, 1, 1, 0, 0)),          # stands for 2 same color in a line 

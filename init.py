@@ -16,6 +16,10 @@ def read_calibration_data(file_name='calibration.json'):
     with open(file_name,'r') as json_file_handle:
         json_obj = json.load(json_file_handle)
         return json_obj['box'],json_obj['calibration_point'],json_obj['chessboard_point']
+def read(file_name):
+    with open(file_name,'r') as json_file_handle:
+        info = json.load(json_file_handle)
+    return info
 
 def Perspective_transform(box, original_img):
     # 获取画框宽高(x=orignal_W,y=orignal_H)
@@ -87,18 +91,18 @@ def main():
         cv2.waitKey(0)  # wait for choosing the point 
         cv2.setMouseCallback("set point", mouse2)   # disenable mouse click
         cv2.destroyAllWindows()
-        ret, frame = cap.read()
-        test_img = frame 
-        test_img = cv2.resize(test_img,(960,720)) # reduce the size of image
-        test_img = Perspective_transform(box,test_img)
-        test_img = np.rot90(test_img)
-        cv2.imshow('set point',test_img)
-        cv2.namedWindow("set point")
-        cv2.imshow("set point", test_img)
-        cv2.setMouseCallback("set point", mouse3)  # click should be clockwise, from buttom right
-        cv2.waitKey(0)  # wait for choosing the point 
-        cv2.setMouseCallback("set point", mouse2)   # disenable mouse click
-        cv2.destroyAllWindows()
+        # ret, frame = cap.read()
+        # test_img = frame 
+        # test_img = cv2.resize(test_img,(960,720)) # reduce the size of image
+        # test_img = Perspective_transform(box,test_img)
+        # test_img = np.rot90(test_img)
+        # cv2.imshow('set point',test_img)
+        # cv2.namedWindow("set point")
+        # cv2.imshow("set point", test_img)
+        # cv2.setMouseCallback("set point", mouse3)  # click should be clockwise, from buttom right
+        # cv2.waitKey(0)  # wait for choosing the point 
+        # cv2.setMouseCallback("set point", mouse2)   # disenable mouse click
+        # cv2.destroyAllWindows()
         
         
         ret, frame = cap.read()
@@ -112,11 +116,19 @@ def main():
         cv2.setMouseCallback("set point", mouse2)   # disenable mouse click
         cv2.destroyAllWindows()
         
-        
+        cali_points = read('cali_points.json')
+        calibration_point = cali_points['(5,-1)']
+        # calibration_point = (1,1)
         calibration = {'box':box,'calibration_point':calibration_point,'chessboard_point':box1}
         save_calibration_data(calibration)
     else:
+        cali_points = read('cali_points.json')
+        calibration_point = cali_points['(5,-1)']
         a,b,c = read_calibration_data()
+        calibration = {'box':a,'calibration_point':calibration_point,'chessboard_point':c}
+        save_calibration_data(calibration)   
+        a,b,c = read_calibration_data()
+
         print(a)
         print(b)
         print(c)

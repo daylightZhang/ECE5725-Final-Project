@@ -414,7 +414,7 @@ class GoBang_GUI():
         with open(file_name,'w') as json_file_handle:
             new_info = json.dumps(cur_info)
             json_file_handle.write(new_info)
-            print('write successed')
+            # print('write successed')
 
     def Human(self):
         if self.identify_finished_flag:                            # means new pieces has been readed  
