@@ -16,7 +16,7 @@ ROW = COLUMN
 next_point = [0, 0]                            # The next step for AI
 
 ratio = 2                                      # attack ratio
-DEPTH = 2                                      # search depth, if depth is bigger, the running speed will become slower exponentially
+DEPTH = 1                                      # search depth, if depth is bigger, the running speed will become slower exponentially
 
                                                # Score for different situation
 shape_score = [(50, (0, 1, 1, 0, 0)),          # stands for 2 same color in a line 
@@ -32,7 +32,7 @@ shape_score = [(50, (0, 1, 1, 0, 0)),          # stands for 2 same color in a li
                (5000, (1, 0, 1, 1, 1)),
                (5000, (1, 1, 1, 1, 0)),
                (5000, (0, 1, 1, 1, 1)),
-               (50000, (0, 1, 1, 1, 1, 0)),    # four in a row without block 
+               (500000, (0, 1, 1, 1, 1, 0)),    # four in a row without block 
                (99999999, (1, 1, 1, 1, 1))]    # Five in a row
 
 def ai(list1,list2,list3,list_all):

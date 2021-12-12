@@ -26,6 +26,9 @@ from Rules import *         # import all GoBang Rules
 from gobang_AI import ai
 import os
 import json
+from log import Log  
+
+log = Log()
 
 def default_font(font_size=15):
     """
@@ -269,12 +272,17 @@ class GoBang_GUI():
         self.button_font = default_font(28)                          # set the font size 
         self.piece_font = default_font(35)
         self.piece_font_2 = default_font(15)
-        self.quit_button = Button(self.DISPLAY,self.button_font,'Quit','BLACK','WHITE',680,600,False,None)
-        self.regret_button = Button(self.DISPLAY,self.button_font,'Wife Button','BLACK','WHITE',630,500,False,None)
+        self.win_cap_font = default_font(35)
+        self.quit_button = Button(self.DISPLAY,self.button_font,'Quit','BLACK','WHITE',665,600,False,None)
+        self.regret_button = Button(self.DISPLAY,self.button_font,'Wife Button','BLACK','WHITE',610,500,False,None)
+        self.replay_button = Button(self.DISPLAY,self.button_font,'Replay','BLACK','WHITE',650,400,False,None)
+        self.win_caption = Caption(self.DISPLAY,self.win_cap_font,'WIN','RED',600,250)
         self.last_piece = 1
         self.file_name = '/home/pi/Desktop/ECE5725_project/ECE5725-Final-Project/info.json'
         self.identify_finished_flag = False                           # flag that is shared with main program
         self.ai_think_finished_flag = False                           # flag that is shared with main program 
+        self.human_win = False 
+        self.robot_win = False 
         self.clock = pygame.time.Clock()
         self.timer = threading.Timer(1,self.read_chessboard)
         self.timer.start()
@@ -288,9 +296,14 @@ class GoBang_GUI():
             pygame.draw.line(self.BOARD_IMG, (0, 0, 0), (n, MARGIN_Y), (n, BOARD_HEIGHT - MARGIN_Y), width)
     
     def read_chessboard(self):
-        cur_info = self.read(self.file_name)
-        # self.ai_think_finshed_flag = cur_info['ai_think_finshed_flag']
-        self.identify_finished_flag = cur_info['identify_finished_flag']
+        try:
+            cur_info = self.read(self.file_name)
+            # self.ai_think_finshed_flag = cur_info['ai_think_finshed_flag']
+            self.identify_finished_flag = cur_info['identify_finished_flag']
+        except json.decoder.JSONDecodeError:
+            log.warning('read failure, the json file is being written, program will read again')
+            pass 
+    
         self.timer = threading.Timer(1,self.read_chessboard)
         self.timer.start()
     
@@ -302,7 +315,7 @@ class GoBang_GUI():
             #x_, y_ = self.PIECES_ON_BOARD[i]         # get the position of the current piece on board 
             # judge black or white piece
             piece_img = self.BLACK_PIECES_IMG if CHESS_BOARD[piece_x][piece_y] == BLACK_PIECE else self.WHITE_PIECES_IMG
-            color = COLOR1 if self.display_orders[i -1] is not self.last_piece else COLOR2
+            color = COLOR1 if self.display_orders[i -1] != self.last_piece else COLOR2
             self.DISPLAY.blit(piece_img,(MARGIN_X + MARGIN_X_BOARD + (piece_x -1) * CELL_SIZE,\
                                                     MARGIN_Y + MARGIN_Y_BOARD + (piece_y - 1) * CELL_SIZE))
             if self.display_orders[i - 1] < 10:    # one digit number 
@@ -327,6 +340,15 @@ class GoBang_GUI():
         self.draw_pieces()
         self.quit_button.display()
         self.regret_button.display()
+        self.replay_button.display()
+        if self.human_win:
+            self.win_caption.change_text('YOU WIN!')
+            self.win_caption.display()
+        elif self.robot_win:
+            self.win_caption.change_text('YOU LOSE!')
+            self.win_caption.display()
+        else: 
+            pass 
     
     def mouse_on_button(self, mouse_x, mouse_y):
         if self.quit_button.is_on_button([mouse_x,mouse_y]):       # if the mouse is on quit button 
@@ -339,7 +361,12 @@ class GoBang_GUI():
             self.regret_button.change_color('GREEN') 
         elif self.regret_button.is_on_button([mouse_x,mouse_y]) == False:
             self.regret_button.change_color('WHITE')
-            
+        
+        if self.replay_button.is_on_button([mouse_x,mouse_y]):
+            self.replay_button.change_color('GREEN') 
+        elif self.replay_button.is_on_button([mouse_x,mouse_y]) == False:
+            self.replay_button.change_color('WHITE')   
+        
     def mouse_click(self, mouse_x, mouse_y):
         # print('mouse_x = ', mouse_x,' mouse_y = ',mouse_y)
         # this means the click happens in the chessboard
@@ -373,7 +400,9 @@ class GoBang_GUI():
         if self.quit_button.is_on_button([mouse_x,mouse_y]):   # if the quit button is pressed 
             self.running = False   # we must set self.running = False, otherwise error with pygame.fill can happen
             self.timer.cancel()    # release  the timer 
+            # log.info('pygame ended')
             pygame.quit()
+            
         if self.regret_button.is_on_button([mouse_x,mouse_y]): # if the regret button is pressed
             black_piece = self.BLACK_PIECES_ON_BOARD.pop()
             white_piece = self.WHITE_PIECES_ON_BOARD.pop()
@@ -398,9 +427,32 @@ class GoBang_GUI():
             self.game_end = False
             self.is_balck_turn = True
             self.is_white_turn = False 
-            print('successufully regret')
+            self.human_win = False 
+            self.robot_win = False 
+            log.info('successufully regret')
         # elif mouse_x and mouse_y: # this means the click happens in the control panel 
         #pass 
+        if self.replay_button.is_on_button([mouse_x,mouse_y]): # replay button is pressed 
+            log.info('replay the game')
+            self.write('info','replay_flag',True)
+            self.human_win = False 
+            self.robot_win = False 
+            self.list1.clear()
+            self.list2.clear()
+            self.list3.clear()
+            self.PIECES_ON_BOARD.clear()
+            self.BLACK_PIECES_ON_BOARD.clear()
+            self.WHITE_PIECES_ON_BOARD.clear()
+            self.is_balck_turn = True 
+            self.is_white_turn = False 
+            self.game_end = False 
+            self.order = 0
+            self.last_piece = 1 
+            self.display_orders.clear()
+            CHESS_BOARD.clear()
+            for i in range(1, BOARD_ORDER + 2):                         # +2 is because we don't use (0,0), so we need one more
+                row = [EMPTY_PIECE for j in range(1, BOARD_ORDER + 2) ] # +2 is because we don't use (0,0), so we need one more
+                CHESS_BOARD.append(row)
         
     def read(self,file_name):
         with open(file_name,'r') as json_file_handle:
@@ -418,6 +470,7 @@ class GoBang_GUI():
 
     def Human(self):
         if self.identify_finished_flag:                            # means new pieces has been readed  
+            self.identify_finished_flag = False
             cur_info = self.read(self.file_name) 
             human_new_step = cur_info['human_new_step']            # a turple contains new step (x,y)
             x,y = human_new_step[0], human_new_step[1]
@@ -429,20 +482,23 @@ class GoBang_GUI():
             self.order = self.order + 1 
             self.last_piece = self.order
             self.display_orders.append(self.order)
-            if win_judgment(CHESS_BOARD,(x,y),WHITE_PIECE):
+            if win_judgment(CHESS_BOARD,(x,y),BLACK_PIECE):
                 self.game_end = True 
-                print('You win!')
+                self.human_win = True 
+                # print('You win!')
+                log.info('Congrats! You win!')
             self.is_white_turn = True 
             self.is_balck_turn = False
-            self.identify_finished_flag = False
             # self.write(self.file_name,'cur_black_pos',self.BLACK_PIECES_ON_BOARD)
             self.write(self.file_name,'identify_finished_flag',False)
+            log.info('Human\'s step updated on the GUI')
 
     def Robot(self):
         next_step = ai(self.list1,self.list2,self.list3,LIST_ALL)
         # print(next_step)
         x,y = next_step[0] + 1, next_step[1] + 1
-        print('Robot set white pieces here:',x,' ',y)
+        # print('Robot set white pieces here:',x,' ',y)
+        log.info('Robot generate new step at x-' + str(x) + ' y-' + str(y))
         self.write(self.file_name,'ai_new_step',(x,y))             # record AI's new step in the info.json 
         self.write(self.file_name,'ai_think_finished_flag',True)    # AI has finished thinking
         self.PIECES_ON_BOARD.append((x,y))
@@ -456,7 +512,9 @@ class GoBang_GUI():
         # self.draw_text(COLOR1,str(self.order),x,y)
         if win_judgment(CHESS_BOARD,(x,y),WHITE_PIECE):
             self.game_end = True 
-            print('Sorry, robot win!')
+            self.robot_win = True 
+            # print('Sorry, robot win!')
+            log.info('Sorry, you lose.')
         self.is_white_turn = False 
         self.is_balck_turn = True
         
@@ -485,7 +543,9 @@ class GoBang_GUI():
                     self.mouse_on_button(event.pos[0], event.pos[1])                    
                 if event.type == pygame.QUIT:
                     self.RUNNING = False
+                    # log.info('pygame ended')
                     pygame.quit()  # exit the game
+
             self.clock.tick(10)
 
         

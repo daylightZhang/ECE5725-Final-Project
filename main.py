@@ -86,7 +86,7 @@ class White(object):
     def place(self):
         target_coordinate = motor.target_coordinate.copy()
         if target_coordinate != motor.transition_coordinate:        # stil need to be moved 1-2 blocks 
-            motor.move_by_coordinate(target_coordinate[0],target_coordinate[1])        
+            motor.move_by_coordinate(target_coordinate[0],target_coordinate[1],False)        
         log.debug('white(AI) stone has arrived at x-'+str(target_coordinate[0])+' y-'+str(target_coordinate[1]))   
         pump.release(motor)
         log.info('white(AI) has released the stone')
@@ -124,7 +124,7 @@ def calibrate(red_circle):
         return 
     else:
         flag_controller['calibrate_flag'] = False             # disenable this flag in order not to open 2 same thread
-        log.info('Coordinate of red circle: x-'+str(red_circle[0])+' y-'+str(red_circle[1]))
+        # log.debug('Coordinate of red circle: x-'+str(red_circle[0])+' y-'+str(red_circle[1]))
         move_step = [0,0]                                     # list to store the move steps 
         target_position = motor.target_position_pixel.copy()
         cur_position = [red_circle[0],red_circle[1]]          # get the center coordinates of red circle  
@@ -133,8 +133,8 @@ def calibrate(red_circle):
         output_step_x = K_p * dx                              # PID control, calculate the output step for control step motor 
         output_step_y = K_p * dy                              # output control for y axis 
 
-        log.info('cur_pos: x-'+str(cur_position[0])+' y-'+str(cur_position[1]) + \
-                 ' target_pos: x-'+str(target_position[0])+' y-'+str(target_position[1]))
+        # log.debug('cur_pos: x-'+str(cur_position[0])+' y-'+str(cur_position[1]) + \
+                #  ' target_pos: x-'+str(target_position[0])+' y-'+str(target_position[1]))
         dx_direction = -1 if dx > 0 else 1                    # set the rorating direction for x-axis 
         dy_direction = 1 if dy > 0 else -1                    # set the rorating direction for y-axis 
         move_step[0] = dx_direction * abs(output_step_x)      # x-axis 
@@ -153,8 +153,8 @@ def calibrate_check():
     check_dy = abs(motor.target_position_pixel[1] - red_circle[1])
     if check_dx > calibrate_threshold or check_dy > calibrate_threshold:
         flag_controller['calibrate_flag'] = True 
-        log.info('calibration error is still big, continue calibrating')
-        log.info('error_x:'+str(check_dx)+' error_y:'+str(check_dy))
+        # log.debug('calibration error is still big, continue calibrating')
+        # log.info('error_x:'+str(check_dx)+' error_y:'+str(check_dy))
     else:
         # motor.cur_coordinate = motor.origin_coordinate.copy()
         '''
@@ -219,24 +219,30 @@ def identify_black_step():
     # global read_flag_timer
     # read_flag_timer.start()  # start the timer 
     # return num_black_stone 
-
-def read_ai_finished_flag():
-    global read_flag_timer
-    cur_info = read('info.json')
-    ai_think_finished_flag = cur_info['ai_think_finished_flag']
-    if ai_think_finished_flag:
-        write('info.json','ai_think_finished_flag',False)
-        log.info('white(AI) has finished thinking')
-        thread_white_locate = threading.Thread(target=white.locate)
-        thread_white_locate.start()
-    
-    read_flag_timer = threading.Timer(1,read_ai_finished_flag)
-    read_flag_timer.start()
-
 def init_flags():
     write('info.json','identify_finished_flag',False)
     write('info.json','ai_think_finished_flag',False)
+    write('info.json','replay_flag',False)
     log.info('Control flags has been initialized')
+    
+def read_ai_finished_flag():
+    global read_flag_timer
+    try:
+        cur_info = read('info.json')
+        ai_think_finished_flag = cur_info['ai_think_finished_flag']
+        replay_flag = cur_info['replay_flag']
+        if replay_flag:
+            init_flags()                                             # restart the game 
+        if ai_think_finished_flag:
+            write('info.json','ai_think_finished_flag',False)
+            log.info('white(AI) has finished thinking')
+            thread_white_locate = threading.Thread(target=white.locate)
+            thread_white_locate.start()
+    except json.decoder.JSONDecodeError:                             # when the file is being written 
+        log.warning('read failure, the json file is being written, program will read again') 
+
+    read_flag_timer = threading.Timer(1,read_ai_finished_flag)
+    read_flag_timer.start()
 
 def main():
     init_flags()
@@ -257,8 +263,8 @@ def main():
         # camera preview
         camera.show('Camera Preview',camera.get_img())  
         # chessboard preview 
-        camera.show('chessboard preview', camera.get_chessboard_area())          
-        camera.show('red region',camera.red_region)
+        camera.show('chessboard preview', cv2.resize(camera.get_chessboard_area(),(360,360)))          
+        # camera.show('red region',camera.red_region)
         # calibration 
         if flag_controller['calibrate_flag']:                 # if calibrate_flag is True
             # start a thread to calibrate 
@@ -294,3 +300,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    # motor.move_by_coordinate()

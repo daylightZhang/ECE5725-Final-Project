@@ -10,6 +10,7 @@ import threading
 from init import read_calibration_data
 import numpy as np
 import math
+import datetime
 
 class Motor(object):
     def __init__(self):
@@ -71,6 +72,7 @@ class Motor(object):
     def move(self, axis, blocks):
         # print("ori pos",self.origin_coordinate)
         # print("cur pos",self.cur_coordinate)
+        # print('before move ',self.cur_coordinate)
         if axis == 'x':
             pins = self.x_axis_pins
             step = round(abs(blocks) * self.unit_step_x)
@@ -92,16 +94,24 @@ class Motor(object):
                     else:
                         GPIO.output(pins[pin], self.seq[7 - halfstep][pin])
                 time.sleep(0.0008)
-    
+        # print('move finished')
+        # print('after move ',self.cur_coordinate)
     def move_xy(self,move_distance,is_multiThread=False): # move_distance = [5,7] 5 is for x axis, 7 is for y axis
         if is_multiThread is True:
+            # thread_x = threading.Thread(target=self.move,args=('x',move_distance[0]))
             thread_y = threading.Thread(target=self.move,args=('y',move_distance[1]))
-            thread_x = threading.Thread(target=self.move,args=('x',move_distance[0]))
-            thread_x.start()
+            # thread_x.setDaemon(True)
+            # thread_y.setDaemon(True)
+            # thread_x.start()
             thread_y.start()
             
-            thread_x.join()
-            thread_y.join()
+            # print(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')+'two threads begin now')
+            # thread_x.join()
+            # thread_y.join()
+            self.move('x',move_distance[0])
+            # time.sleep(10)
+            # print(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')+'two threads finished now')
+            # print('two threads finished now')
         else:
             self.move('x',move_distance[0])
             # time.sleep(1)
@@ -140,17 +150,24 @@ class Motor(object):
             self.move_by_step('y',move_step[1])
             # time.sleep(1)
     
-    def move_by_coordinate(self, x_position, y_position):
-        # print('move_by_coordinate is executing!')
+    def move_by_coordinate(self, x_position, y_position,is_multiThread=False):
         dx_block = x_position - self.cur_coordinate[0]
         dy_block = y_position - self.cur_coordinate[1]
         dx_direction = -1 if dx_block > 0 else 1
         dy_direction = 1 if dy_block > 0 else -1
-        # print('x_pos:',x_position,' y_pos:',y_position)
-        # print('cur_pos:',self.cur_coordinate)
-        # print('dx_block:',dx_block,' dy_block:',dy_block)
-        self.move('x', dx_direction * abs(dx_block))
-        time.sleep(0.5)
-        self.move('y', dy_direction * abs(dy_block))
-        time.sleep(0.5)
+        
+        # self.cur_coordinate[0] = x_position
+        # self.cur_coordinate[1] = y_position
+        
+        if is_multiThread is False:
+
+            # print('x_pos:',x_position,' y_pos:',y_position)
+            # print('cur_pos:',self.cur_coordinate)
+            # print('dx_block:',dx_block,' dy_block:',dy_block)
+            self.move('x', dx_direction * abs(dx_block))
+            time.sleep(0.5)
+            self.move('y', dy_direction * abs(dy_block))
+            time.sleep(0.5)
+        else: 
+            self.move_xy([dx_direction * abs(dx_block),dy_direction * abs(dx_block)],True)
 
