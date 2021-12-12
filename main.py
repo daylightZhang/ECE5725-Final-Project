@@ -198,24 +198,25 @@ def identify_black_step():
     gray_img = cv2.cvtColor(resize_img, cv2.COLOR_BGR2GRAY)
     _, black_stones = cv2.threshold(gray_img, 60, 255, cv2.THRESH_BINARY)
     kernel = np.ones((30,30))                                       # a 30x30 all one matrix
-    
+    new_black_step = ()
     for i in range(9):                                              # 9 rows 
         for j in range(9):                                          # 9 colomns
             block = black_stones[i*30:(i+1)*30,j*30:(j+1)*30]       # in opencv, we express in this way (y,x)
             check_matrix = block * kernel
             # print('row:',i,' col:',j,' sum=',check_matrix.sum())
-            if check_matrix.sum() <= 150000:
+            if check_matrix.sum() <= 160000:
                 if (j+1,i+1) not in cur_black_pos:
                     new_black_step = (j + 1, i + 1)                 # detect new added black pieces 
                     cur_black_pos.append(new_black_step)
                     log.info('Identified new black stone position on board: x-'+str(j+1)+' y-'+str(i+1))
                     # record the new human(black) step in the info.json
                     write('info.json','human_new_step',new_black_step)
+                    write('info.json','identify_finished_flag',True)
                     break
-                                         
+    if new_black_step is ():
+        log.warning('No new black stone detected, try it again')                            
                 # log.debug('black stone pos: x-'+str(j+1)+' y-'+str(i+1)+'check_sum: '+str(check_matrix.sum()))
-
-    write('info.json','identify_finished_flag',True)
+    
     # global read_flag_timer
     # read_flag_timer.start()  # start the timer 
     # return num_black_stone 
@@ -223,6 +224,7 @@ def init_flags():
     write('info.json','identify_finished_flag',False)
     write('info.json','ai_think_finished_flag',False)
     write('info.json','replay_flag',False)
+    write('info.json','regret_flag',False)
     log.info('Control flags has been initialized')
     
 def read_ai_finished_flag():
@@ -231,8 +233,15 @@ def read_ai_finished_flag():
         cur_info = read('info.json')
         ai_think_finished_flag = cur_info['ai_think_finished_flag']
         replay_flag = cur_info['replay_flag']
+        regret_flag = cur_info['regret_flag']
+        if regret_flag:
+            write('info.json','regret_flag',False)
+            cur_black_pos.pop()
         if replay_flag:
+            write('info.json','replay_flag',False)
+            cur_black_pos.clear()
             init_flags()                                             # restart the game 
+           
         if ai_think_finished_flag:
             write('info.json','ai_think_finished_flag',False)
             log.info('white(AI) has finished thinking')
@@ -264,7 +273,7 @@ def main():
         camera.show('Camera Preview',camera.get_img())  
         # chessboard preview 
         camera.show('chessboard preview', cv2.resize(camera.get_chessboard_area(),(360,360)))          
-        # camera.show('red region',camera.red_region)
+        camera.show('red region',camera.red_region)
         # calibration 
         if flag_controller['calibrate_flag']:                 # if calibrate_flag is True
             # start a thread to calibrate 

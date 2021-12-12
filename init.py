@@ -5,7 +5,12 @@ import cv2
 import json 
 import numpy as np
 import math
-
+# origin 
+# "box": [[768, 533], [323, 527], [326, 162], [768, 163]]
+# first modified 
+# "box": [[760, 539], [315, 533], [318, 168], [760, 169]]
+# second modified 
+# "box": [[776, 539], [331, 533], [334, 168], [776, 169]]
 def save_calibration_data(data,file_name='calibration.json'):
     json_str = json.dumps(data)
     with open(file_name, 'w+') as json_file_handle:

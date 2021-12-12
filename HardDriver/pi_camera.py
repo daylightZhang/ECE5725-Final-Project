@@ -91,6 +91,6 @@ class Camera(object):
                                             param1=30,param2=10,minRadius=0,maxRadius=100)
         # "No red circles detection" Bug is fixed. 
         if self.red_circles is None:
-            print('No red circle is detected!')
+            # print('No red circle is detected!')
             return
         return self.red_circles[0][0] 

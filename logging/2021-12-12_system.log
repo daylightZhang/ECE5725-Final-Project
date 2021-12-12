@@ -1,0 +1,578 @@
+2021-12-12 14:06:54.115413 [INFO] logging saved in /home/pi/Desktop/ECE5725_project/ECE5725-Final-Project/logging/2021-12-12_system.log
+2021-12-12 14:06:54.393652 [INFO] logging saved in ./logging/2021-12-12_system.log
+2021-12-12 14:06:54.395319 [INFO] GoBang starts now
+2021-12-12 14:06:54.432027 [INFO] Hardware has been initialized successfully.
+2021-12-12 14:06:54.434840 [INFO] calibration points have been loaded
+2021-12-12 14:06:54.446855 [INFO] Control flags has been initialized
+2021-12-12 14:06:54.482595 [INFO] Start the flag reading timer
+2021-12-12 14:06:54.484239 [INFO] Waiting for human to place chess stone
+2021-12-12 14:26:52.181231 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 14:26:52.236509 [INFO] Identified new black stone position on board: x-4 y-4
+2021-12-12 14:26:52.517555 [INFO] Human's step updated on the GUI
+2021-12-12 14:26:52.630568 [INFO] Robot generate new step at x-5 y-5
+2021-12-12 14:26:53.419830 [INFO] white(AI) has finished thinking
+2021-12-12 14:26:53.426394 [DEBUG] tar_coor_str = (5,5)
+2021-12-12 14:26:57.095364 [INFO] white(AI) picked up a piece
+2021-12-12 14:27:02.204239 [INFO] Robot generate new step at x-4 y-5
+2021-12-12 14:27:02.453764 [INFO] white(AI) has finished thinking
+2021-12-12 14:27:02.459720 [DEBUG] tar_coor_str = (4,5)
+2021-12-12 14:27:06.162730 [INFO] white(AI) picked up a piece
+2021-12-12 14:27:06.480145 [INFO] Main program ended
+2021-12-12 14:27:14.726740 [INFO] logging saved in /home/pi/Desktop/ECE5725_project/ECE5725-Final-Project/logging/2021-12-12_system.log
+2021-12-12 14:27:14.882665 [INFO] logging saved in ./logging/2021-12-12_system.log
+2021-12-12 14:27:14.883235 [INFO] GoBang starts now
+2021-12-12 14:27:14.904278 [INFO] Hardware has been initialized successfully.
+2021-12-12 14:27:14.905037 [INFO] calibration points have been loaded
+2021-12-12 14:27:14.912666 [INFO] Control flags has been initialized
+2021-12-12 14:27:14.945037 [INFO] Start the flag reading timer
+2021-12-12 14:27:14.945480 [INFO] Waiting for human to place chess stone
+2021-12-12 14:27:56.352499 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 14:27:56.430610 [INFO] Identified new black stone position on board: x-4 y-4
+2021-12-12 14:27:56.656599 [INFO] Human's step updated on the GUI
+2021-12-12 14:27:56.758139 [INFO] Robot generate new step at x-5 y-5
+2021-12-12 14:27:57.055150 [INFO] white(AI) has finished thinking
+2021-12-12 14:27:57.061127 [DEBUG] tar_coor_str = (5,5)
+2021-12-12 14:28:00.791464 [INFO] white(AI) picked up a piece
+2021-12-12 14:28:17.847077 [INFO] calibration succeed
+2021-12-12 14:28:17.849668 [DEBUG] white(AI) stone has arrived at x-5 y-5
+2021-12-12 14:28:21.524893 [INFO] white(AI) has released the stone
+2021-12-12 14:28:21.527177 [DEBUG] origin coordinate:5 -1
+2021-12-12 14:28:31.141367 [DEBUG] target coordinate:140 96
+2021-12-12 14:28:33.095060 [INFO] calibration succeed
+2021-12-12 14:28:33.095445 [INFO] waiting for human to place chess stone
+2021-12-12 14:29:07.772166 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 14:29:08.896736 [INFO] Human's step updated on the GUI
+2021-12-12 14:29:09.021807 [INFO] Robot generate new step at x-5 y-4
+2021-12-12 14:29:09.267548 [INFO] white(AI) has finished thinking
+2021-12-12 14:29:09.268850 [DEBUG] tar_coor_str = (5,4)
+2021-12-12 14:29:12.978073 [INFO] white(AI) picked up a piece
+2021-12-12 14:29:22.363859 [INFO] calibration succeed
+2021-12-12 14:29:22.366240 [DEBUG] white(AI) stone has arrived at x-5 y-4
+2021-12-12 14:29:26.044383 [INFO] white(AI) has released the stone
+2021-12-12 14:29:26.044931 [DEBUG] origin coordinate:5 -1
+2021-12-12 14:29:34.191210 [DEBUG] target coordinate:140 96
+2021-12-12 14:29:35.531348 [INFO] calibration succeed
+2021-12-12 14:29:35.531841 [INFO] waiting for human to place chess stone
+2021-12-12 14:30:29.288516 [INFO] Main program ended
+2021-12-12 14:34:02.940963 [INFO] logging saved in /home/pi/Desktop/ECE5725_project/ECE5725-Final-Project/logging/2021-12-12_system.log
+2021-12-12 14:34:03.175941 [INFO] logging saved in ./logging/2021-12-12_system.log
+2021-12-12 14:34:03.176266 [INFO] GoBang starts now
+2021-12-12 14:34:03.196170 [CRITICAL] Failed to load Pi Camera, program terminated
+2021-12-12 14:34:24.583934 [INFO] logging saved in /home/pi/Desktop/ECE5725_project/ECE5725-Final-Project/logging/2021-12-12_system.log
+2021-12-12 14:34:24.742033 [INFO] logging saved in ./logging/2021-12-12_system.log
+2021-12-12 14:34:24.742392 [INFO] GoBang starts now
+2021-12-12 14:34:24.744061 [CRITICAL] Failed to load Pi Camera, program terminated
+2021-12-12 14:38:10.891090 [INFO] logging saved in /home/pi/Desktop/ECE5725_project/ECE5725-Final-Project/logging/2021-12-12_system.log
+2021-12-12 14:38:11.101929 [INFO] logging saved in ./logging/2021-12-12_system.log
+2021-12-12 14:38:11.102507 [INFO] GoBang starts now
+2021-12-12 14:38:11.139927 [INFO] Hardware has been initialized successfully.
+2021-12-12 14:38:11.141551 [INFO] calibration points have been loaded
+2021-12-12 14:38:11.151048 [INFO] Control flags has been initialized
+2021-12-12 14:38:11.190155 [INFO] Start the flag reading timer
+2021-12-12 14:38:11.190622 [INFO] Waiting for human to place chess stone
+2021-12-12 14:39:54.114355 [INFO] Main program ended
+2021-12-12 14:41:51.852578 [INFO] logging saved in /home/pi/Desktop/ECE5725_project/ECE5725-Final-Project/logging/2021-12-12_system.log
+2021-12-12 14:41:52.006359 [INFO] logging saved in ./logging/2021-12-12_system.log
+2021-12-12 14:41:52.006870 [INFO] GoBang starts now
+2021-12-12 14:41:52.020828 [INFO] Hardware has been initialized successfully.
+2021-12-12 14:41:52.021726 [INFO] calibration points have been loaded
+2021-12-12 14:41:52.029395 [INFO] Control flags has been initialized
+2021-12-12 14:41:52.062352 [INFO] Start the flag reading timer
+2021-12-12 14:41:52.062847 [INFO] Waiting for human to place chess stone
+2021-12-12 14:41:57.494938 [INFO] Main program ended
+2021-12-12 14:47:37.483947 [INFO] logging saved in /home/pi/Desktop/ECE5725_project/ECE5725-Final-Project/logging/2021-12-12_system.log
+2021-12-12 14:47:37.626763 [INFO] logging saved in ./logging/2021-12-12_system.log
+2021-12-12 14:47:37.627119 [INFO] GoBang starts now
+2021-12-12 14:47:37.640046 [INFO] Hardware has been initialized successfully.
+2021-12-12 14:47:37.645974 [INFO] calibration points have been loaded
+2021-12-12 14:47:37.668984 [INFO] Control flags has been initialized
+2021-12-12 14:47:37.693194 [INFO] Start the flag reading timer
+2021-12-12 14:47:37.693861 [INFO] Waiting for human to place chess stone
+2021-12-12 14:47:55.182743 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 14:47:55.258906 [INFO] Identified new black stone position on board: x-4 y-4
+2021-12-12 14:47:56.350492 [INFO] Human's step updated on the GUI
+2021-12-12 14:47:56.459663 [INFO] Robot generate new step at x-5 y-5
+2021-12-12 14:47:56.726888 [INFO] white(AI) has finished thinking
+2021-12-12 14:47:56.730077 [DEBUG] tar_coor_str = (5,5)
+2021-12-12 14:48:00.402246 [INFO] white(AI) picked up a piece
+2021-12-12 14:48:11.935956 [INFO] calibration succeed
+2021-12-12 14:48:11.937129 [DEBUG] white(AI) stone has arrived at x-5 y-5
+2021-12-12 14:48:15.561105 [INFO] white(AI) has released the stone
+2021-12-12 14:48:15.561580 [DEBUG] origin coordinate:5 -1
+2021-12-12 14:48:24.987455 [DEBUG] target coordinate:140 96
+2021-12-12 14:48:26.063668 [INFO] calibration succeed
+2021-12-12 14:48:26.064227 [INFO] waiting for human to place chess stone
+2021-12-12 14:48:52.501531 [INFO] Main program ended
+2021-12-12 14:49:41.093446 [INFO] logging saved in /home/pi/Desktop/ECE5725_project/ECE5725-Final-Project/logging/2021-12-12_system.log
+2021-12-12 14:49:41.251797 [INFO] logging saved in ./logging/2021-12-12_system.log
+2021-12-12 14:49:41.252234 [INFO] GoBang starts now
+2021-12-12 14:49:41.261876 [INFO] Hardware has been initialized successfully.
+2021-12-12 14:49:41.262647 [INFO] calibration points have been loaded
+2021-12-12 14:49:41.275817 [INFO] Control flags has been initialized
+2021-12-12 14:49:41.308264 [INFO] Start the flag reading timer
+2021-12-12 14:49:41.308875 [INFO] Waiting for human to place chess stone
+2021-12-12 14:51:17.936707 [INFO] Main program ended
+2021-12-12 15:07:04.191130 [INFO] logging saved in ./logging/2021-12-12_system.log
+2021-12-12 15:07:04.191489 [INFO] GoBang starts now
+2021-12-12 15:07:04.199576 [INFO] Hardware has been initialized successfully.
+2021-12-12 15:07:04.200157 [INFO] calibration points have been loaded
+2021-12-12 15:07:04.206471 [INFO] Control flags has been initialized
+2021-12-12 15:07:04.228151 [INFO] Start the flag reading timer
+2021-12-12 15:07:04.228603 [INFO] Waiting for human to place chess stone
+2021-12-12 15:07:07.672539 [INFO] Main program ended
+2021-12-12 15:08:23.303947 [INFO] logging saved in /home/pi/Desktop/ECE5725_project/ECE5725-Final-Project/logging/2021-12-12_system.log
+2021-12-12 15:08:23.462835 [INFO] logging saved in ./logging/2021-12-12_system.log
+2021-12-12 15:08:23.463246 [INFO] GoBang starts now
+2021-12-12 15:08:23.472371 [INFO] Hardware has been initialized successfully.
+2021-12-12 15:08:23.473184 [INFO] calibration points have been loaded
+2021-12-12 15:08:23.480746 [INFO] Control flags has been initialized
+2021-12-12 15:08:23.514982 [INFO] Start the flag reading timer
+2021-12-12 15:08:23.515828 [INFO] Waiting for human to place chess stone
+2021-12-12 15:08:29.646939 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:08:29.747155 [INFO] Identified new black stone position on board: x-4 y-4
+2021-12-12 15:08:30.139039 [INFO] Human's step updated on the GUI
+2021-12-12 15:08:30.265217 [INFO] Robot generate new step at x-5 y-5
+2021-12-12 15:08:30.534364 [INFO] white(AI) has finished thinking
+2021-12-12 15:08:30.536086 [DEBUG] tar_coor_str = (5,5)
+2021-12-12 15:08:34.196206 [INFO] white(AI) picked up a piece
+2021-12-12 15:08:44.850922 [INFO] calibration succeed
+2021-12-12 15:08:44.853149 [DEBUG] white(AI) stone has arrived at x-5 y-5
+2021-12-12 15:08:48.543828 [INFO] white(AI) has released the stone
+2021-12-12 15:08:48.544264 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:08:58.212204 [DEBUG] target coordinate:140 96
+2021-12-12 15:08:58.796890 [INFO] calibration succeed
+2021-12-12 15:08:58.797577 [INFO] waiting for human to place chess stone
+2021-12-12 15:09:08.228643 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:09:08.350959 [INFO] Identified new black stone position on board: x-3 y-5
+2021-12-12 15:09:09.268669 [INFO] Human's step updated on the GUI
+2021-12-12 15:09:09.404776 [INFO] Robot generate new step at x-2 y-6
+2021-12-12 15:09:09.639037 [INFO] white(AI) has finished thinking
+2021-12-12 15:09:09.644005 [DEBUG] tar_coor_str = (2,6)
+2021-12-12 15:09:13.315807 [INFO] white(AI) picked up a piece
+2021-12-12 15:09:30.605422 [INFO] calibration succeed
+2021-12-12 15:09:33.163688 [DEBUG] white(AI) stone has arrived at x-2 y-6
+2021-12-12 15:09:36.803060 [INFO] white(AI) has released the stone
+2021-12-12 15:09:36.803529 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:09:52.196555 [DEBUG] target coordinate:140 96
+2021-12-12 15:09:53.973558 [INFO] calibration succeed
+2021-12-12 15:09:53.974059 [INFO] waiting for human to place chess stone
+2021-12-12 15:10:02.619733 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:10:02.637788 [INFO] Identified new black stone position on board: x-4 y-6
+2021-12-12 15:10:03.461270 [INFO] Human's step updated on the GUI
+2021-12-12 15:10:03.616252 [INFO] Robot generate new step at x-4 y-7
+2021-12-12 15:10:03.808576 [INFO] white(AI) has finished thinking
+2021-12-12 15:10:03.810850 [DEBUG] tar_coor_str = (4,7)
+2021-12-12 15:10:07.512574 [INFO] white(AI) picked up a piece
+2021-12-12 15:10:23.271377 [INFO] calibration succeed
+2021-12-12 15:10:23.272024 [DEBUG] white(AI) stone has arrived at x-4 y-7
+2021-12-12 15:10:26.943676 [INFO] white(AI) has released the stone
+2021-12-12 15:10:26.944362 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:10:40.887986 [DEBUG] target coordinate:140 96
+2021-12-12 15:10:42.777701 [INFO] calibration succeed
+2021-12-12 15:10:42.778245 [INFO] waiting for human to place chess stone
+2021-12-12 15:10:48.458802 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:10:48.523951 [INFO] Identified new black stone position on board: x-5 y-6
+2021-12-12 15:10:48.616771 [INFO] Human's step updated on the GUI
+2021-12-12 15:10:48.796583 [INFO] Robot generate new step at x-6 y-6
+2021-12-12 15:10:48.914253 [INFO] white(AI) has finished thinking
+2021-12-12 15:10:48.915943 [DEBUG] tar_coor_str = (6,6)
+2021-12-12 15:10:52.592310 [INFO] white(AI) picked up a piece
+2021-12-12 15:11:06.996673 [INFO] calibration succeed
+2021-12-12 15:11:06.999677 [DEBUG] white(AI) stone has arrived at x-6 y-6
+2021-12-12 15:11:10.664610 [INFO] white(AI) has released the stone
+2021-12-12 15:11:10.665104 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:11:23.133690 [DEBUG] target coordinate:140 96
+2021-12-12 15:11:24.803311 [INFO] calibration succeed
+2021-12-12 15:11:24.803793 [INFO] waiting for human to place chess stone
+2021-12-12 15:11:34.253111 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:11:34.287869 [INFO] Identified new black stone position on board: x-5 y-7
+2021-12-12 15:11:34.789982 [INFO] Human's step updated on the GUI
+2021-12-12 15:11:35.035548 [INFO] Robot generate new step at x-6 y-8
+2021-12-12 15:11:36.037582 [INFO] white(AI) has finished thinking
+2021-12-12 15:11:36.039051 [DEBUG] tar_coor_str = (6,8)
+2021-12-12 15:11:39.731636 [INFO] white(AI) picked up a piece
+2021-12-12 15:11:56.536656 [INFO] calibration succeed
+2021-12-12 15:11:56.539250 [DEBUG] white(AI) stone has arrived at x-6 y-8
+2021-12-12 15:12:00.255315 [INFO] white(AI) has released the stone
+2021-12-12 15:12:00.255910 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:12:15.712618 [DEBUG] target coordinate:140 96
+2021-12-12 15:12:17.357903 [INFO] calibration succeed
+2021-12-12 15:12:17.358263 [INFO] waiting for human to place chess stone
+2021-12-12 15:12:30.885122 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:12:30.986774 [INFO] Identified new black stone position on board: x-5 y-8
+2021-12-12 15:12:31.943197 [INFO] Human's step updated on the GUI
+2021-12-12 15:12:32.251190 [INFO] Robot generate new step at x-5 y-9
+2021-12-12 15:12:33.165891 [INFO] white(AI) has finished thinking
+2021-12-12 15:12:33.168593 [DEBUG] tar_coor_str = (5,9)
+2021-12-12 15:12:36.862921 [INFO] white(AI) picked up a piece
+2021-12-12 15:12:52.236441 [INFO] calibration succeed
+2021-12-12 15:12:54.633315 [DEBUG] white(AI) stone has arrived at x-5 y-9
+2021-12-12 15:12:58.262257 [INFO] white(AI) has released the stone
+2021-12-12 15:12:58.262791 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:13:13.568003 [DEBUG] target coordinate:140 96
+2021-12-12 15:13:14.664083 [INFO] calibration succeed
+2021-12-12 15:13:14.664445 [INFO] waiting for human to place chess stone
+2021-12-12 15:14:50.208289 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:14:50.259532 [INFO] Identified new black stone position on board: x-7 y-7
+2021-12-12 15:14:50.408868 [INFO] Human's step updated on the GUI
+2021-12-12 15:14:50.761316 [INFO] Robot generate new step at x-2 y-4
+2021-12-12 15:14:51.607019 [INFO] white(AI) has finished thinking
+2021-12-12 15:14:51.608666 [DEBUG] tar_coor_str = (2,4)
+2021-12-12 15:14:55.273107 [INFO] white(AI) picked up a piece
+2021-12-12 15:15:08.602251 [INFO] calibration succeed
+2021-12-12 15:15:11.111112 [DEBUG] white(AI) stone has arrived at x-2 y-4
+2021-12-12 15:15:14.750820 [INFO] white(AI) has released the stone
+2021-12-12 15:15:14.752077 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:15:27.417837 [DEBUG] target coordinate:140 96
+2021-12-12 15:15:28.559565 [INFO] calibration succeed
+2021-12-12 15:15:28.560327 [INFO] waiting for human to place chess stone
+2021-12-12 15:15:39.963646 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:15:40.001156 [INFO] Identified new black stone position on board: x-7 y-6
+2021-12-12 15:15:40.581776 [INFO] Human's step updated on the GUI
+2021-12-12 15:15:40.964190 [INFO] Robot generate new step at x-6 y-7
+2021-12-12 15:15:41.793456 [INFO] white(AI) has finished thinking
+2021-12-12 15:15:41.798438 [DEBUG] tar_coor_str = (6,7)
+2021-12-12 15:15:45.481596 [INFO] white(AI) picked up a piece
+2021-12-12 15:16:01.062116 [INFO] calibration succeed
+2021-12-12 15:16:01.062933 [DEBUG] white(AI) stone has arrived at x-6 y-7
+2021-12-12 15:16:04.807023 [INFO] white(AI) has released the stone
+2021-12-12 15:16:04.807542 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:16:18.948259 [DEBUG] target coordinate:140 96
+2021-12-12 15:16:20.684949 [INFO] calibration succeed
+2021-12-12 15:16:20.685616 [INFO] waiting for human to place chess stone
+2021-12-12 15:16:31.066033 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:16:31.115137 [INFO] Identified new black stone position on board: x-6 y-5
+2021-12-12 15:16:31.749342 [INFO] Human's step updated on the GUI
+2021-12-12 15:16:32.110534 [INFO] Robot generate new step at x-4 y-3
+2021-12-12 15:16:32.934152 [INFO] white(AI) has finished thinking
+2021-12-12 15:16:32.943804 [DEBUG] tar_coor_str = (4,3)
+2021-12-12 15:16:36.683849 [INFO] white(AI) picked up a piece
+2021-12-12 15:16:46.269307 [INFO] calibration succeed
+2021-12-12 15:16:46.272151 [DEBUG] white(AI) stone has arrived at x-4 y-3
+2021-12-12 15:16:49.903063 [INFO] white(AI) has released the stone
+2021-12-12 15:16:49.903868 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:16:58.148313 [DEBUG] target coordinate:140 96
+2021-12-12 15:17:00.815099 [INFO] calibration succeed
+2021-12-12 15:17:00.815717 [INFO] waiting for human to place chess stone
+2021-12-12 15:17:11.259030 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:17:11.297041 [INFO] Identified new black stone position on board: x-5 y-4
+2021-12-12 15:17:11.892221 [INFO] Human's step updated on the GUI
+2021-12-12 15:17:12.331729 [INFO] Robot generate new step at x-7 y-4
+2021-12-12 15:17:13.032052 [INFO] white(AI) has finished thinking
+2021-12-12 15:17:13.034083 [DEBUG] tar_coor_str = (7,4)
+2021-12-12 15:17:16.737906 [INFO] white(AI) picked up a piece
+2021-12-12 15:17:29.439017 [INFO] calibration succeed
+2021-12-12 15:17:29.443585 [DEBUG] white(AI) stone has arrived at x-7 y-4
+2021-12-12 15:17:33.124182 [INFO] white(AI) has released the stone
+2021-12-12 15:17:33.124638 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:17:44.239937 [DEBUG] target coordinate:140 96
+2021-12-12 15:17:45.842610 [INFO] calibration succeed
+2021-12-12 15:17:45.843257 [INFO] waiting for human to place chess stone
+2021-12-12 15:17:54.274045 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:17:55.006545 [INFO] Human's step updated on the GUI
+2021-12-12 15:17:55.572866 [INFO] Robot generate new step at x-7 y-8
+2021-12-12 15:17:56.135010 [INFO] white(AI) has finished thinking
+2021-12-12 15:17:56.136009 [DEBUG] tar_coor_str = (7,8)
+2021-12-12 15:17:59.838846 [INFO] white(AI) picked up a piece
+2021-12-12 15:18:19.497215 [INFO] calibration succeed
+2021-12-12 15:18:19.498293 [DEBUG] white(AI) stone has arrived at x-7 y-8
+2021-12-12 15:18:23.222717 [INFO] white(AI) has released the stone
+2021-12-12 15:18:23.223862 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:18:40.194605 [DEBUG] target coordinate:140 96
+2021-12-12 15:18:41.510627 [INFO] calibration succeed
+2021-12-12 15:18:41.511235 [INFO] waiting for human to place chess stone
+2021-12-12 15:18:53.379070 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:18:53.468107 [INFO] Identified new black stone position on board: x-7 y-5
+2021-12-12 15:18:53.470495 [INFO] Identified new black stone position on board: x-8 y-7
+2021-12-12 15:18:54.203343 [INFO] Human's step updated on the GUI
+2021-12-12 15:18:54.861018 [INFO] Robot generate new step at x-9 y-8
+2021-12-12 15:18:55.306745 [INFO] white(AI) has finished thinking
+2021-12-12 15:18:55.308339 [DEBUG] tar_coor_str = (9,8)
+2021-12-12 15:18:59.023724 [INFO] white(AI) picked up a piece
+2021-12-12 15:19:21.585371 [INFO] calibration succeed
+2021-12-12 15:19:21.586028 [DEBUG] white(AI) stone has arrived at x-9 y-8
+2021-12-12 15:19:25.264799 [INFO] white(AI) has released the stone
+2021-12-12 15:19:25.265559 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:19:45.304310 [DEBUG] target coordinate:140 96
+2021-12-12 15:19:47.606356 [INFO] calibration succeed
+2021-12-12 15:19:47.606901 [INFO] waiting for human to place chess stone
+2021-12-12 15:20:28.736415 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:20:28.782841 [INFO] Identified new black stone position on board: x-8 y-6
+2021-12-12 15:20:29.539624 [WARNING] read failure, the json file is being written, program will read again
+2021-12-12 15:20:29.541755 [INFO] Human's step updated on the GUI
+2021-12-12 15:20:30.191133 [INFO] Robot generate new step at x-8 y-8
+2021-12-12 15:20:30.546184 [INFO] white(AI) has finished thinking
+2021-12-12 15:20:30.547557 [DEBUG] tar_coor_str = (8,8)
+2021-12-12 15:20:34.229165 [INFO] white(AI) picked up a piece
+2021-12-12 15:20:54.759272 [INFO] calibration succeed
+2021-12-12 15:20:54.760056 [DEBUG] white(AI) stone has arrived at x-8 y-8
+2021-12-12 15:20:58.517711 [INFO] white(AI) has released the stone
+2021-12-12 15:20:58.518746 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:21:16.931328 [DEBUG] target coordinate:140 96
+2021-12-12 15:21:18.969731 [INFO] calibration succeed
+2021-12-12 15:21:18.970306 [INFO] waiting for human to place chess stone
+2021-12-12 15:21:30.806830 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:21:30.871862 [INFO] Identified new black stone position on board: x-3 y-8
+2021-12-12 15:21:31.715840 [INFO] Human's step updated on the GUI
+2021-12-12 15:21:32.544256 [INFO] Robot generate new step at x-6 y-9
+2021-12-12 15:21:32.733230 [INFO] white(AI) has finished thinking
+2021-12-12 15:21:32.735306 [DEBUG] tar_coor_str = (6,9)
+2021-12-12 15:21:36.409531 [INFO] white(AI) picked up a piece
+2021-12-12 15:21:53.514934 [INFO] calibration succeed
+2021-12-12 15:21:56.007495 [DEBUG] white(AI) stone has arrived at x-6 y-9
+2021-12-12 15:21:59.736517 [INFO] white(AI) has released the stone
+2021-12-12 15:21:59.737269 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:22:16.858310 [DEBUG] target coordinate:140 96
+2021-12-12 15:22:17.996768 [INFO] calibration succeed
+2021-12-12 15:22:17.997134 [INFO] waiting for human to place chess stone
+2021-12-12 15:22:44.636157 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:22:44.708754 [INFO] Identified new black stone position on board: x-8 y-5
+2021-12-12 15:22:44.967878 [INFO] Human's step updated on the GUI
+2021-12-12 15:22:45.822953 [INFO] Robot generate new step at x-4 y-9
+2021-12-12 15:22:45.865795 [INFO] white(AI) has finished thinking
+2021-12-12 15:22:45.867050 [DEBUG] tar_coor_str = (4,9)
+2021-12-12 15:22:49.573115 [INFO] white(AI) picked up a piece
+2021-12-12 15:23:07.926931 [INFO] calibration succeed
+2021-12-12 15:23:10.358909 [DEBUG] white(AI) stone has arrived at x-4 y-9
+2021-12-12 15:23:14.071385 [INFO] white(AI) has released the stone
+2021-12-12 15:23:14.072112 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:23:30.989584 [DEBUG] target coordinate:140 96
+2021-12-12 15:23:32.205918 [INFO] calibration succeed
+2021-12-12 15:23:32.206585 [INFO] waiting for human to place chess stone
+2021-12-12 15:23:43.218722 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:23:43.268234 [INFO] Identified new black stone position on board: x-6 y-4
+2021-12-12 15:23:44.229980 [INFO] Human's step updated on the GUI
+2021-12-12 15:23:44.973075 [INFO] Robot generate new step at x-3 y-9
+2021-12-12 15:23:45.029836 [INFO] white(AI) has finished thinking
+2021-12-12 15:23:45.031348 [DEBUG] tar_coor_str = (3,9)
+2021-12-12 15:23:48.725723 [INFO] white(AI) picked up a piece
+2021-12-12 15:24:07.570941 [INFO] calibration succeed
+2021-12-12 15:24:10.050013 [DEBUG] white(AI) stone has arrived at x-3 y-9
+2021-12-12 15:24:13.714726 [INFO] white(AI) has released the stone
+2021-12-12 15:24:13.715248 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:24:32.226576 [DEBUG] target coordinate:140 96
+2021-12-12 15:24:33.249705 [INFO] calibration succeed
+2021-12-12 15:24:33.250113 [INFO] waiting for human to place chess stone
+2021-12-12 15:25:15.371121 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:25:15.409963 [INFO] Identified new black stone position on board: x-5 y-3
+2021-12-12 15:25:15.585429 [INFO] Human's step updated on the GUI
+2021-12-12 15:25:16.329989 [INFO] Robot generate new step at x-7 y-9
+2021-12-12 15:25:16.335682 [INFO] Sorry, you lose.
+2021-12-12 15:25:17.250414 [INFO] white(AI) has finished thinking
+2021-12-12 15:25:17.256671 [DEBUG] tar_coor_str = (7,9)
+2021-12-12 15:25:20.965009 [INFO] white(AI) picked up a piece
+2021-12-12 15:25:40.927486 [INFO] calibration succeed
+2021-12-12 15:25:43.343088 [DEBUG] white(AI) stone has arrived at x-7 y-9
+2021-12-12 15:25:47.009681 [INFO] white(AI) has released the stone
+2021-12-12 15:25:47.010305 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:26:05.396841 [DEBUG] target coordinate:140 96
+2021-12-12 15:26:08.067871 [INFO] calibration succeed
+2021-12-12 15:26:08.068384 [INFO] waiting for human to place chess stone
+2021-12-12 15:26:31.967775 [INFO] successufully regret
+2021-12-12 15:26:38.417709 [INFO] successufully regret
+2021-12-12 15:27:07.342210 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:27:07.455145 [INFO] Identified new black stone position on board: x-3 y-9
+2021-12-12 15:27:08.005863 [INFO] Human's step updated on the GUI
+2021-12-12 15:27:08.891079 [INFO] Robot generate new step at x-7 y-9
+2021-12-12 15:27:09.527493 [INFO] white(AI) has finished thinking
+2021-12-12 15:27:09.528549 [DEBUG] tar_coor_str = (7,9)
+2021-12-12 15:27:13.241508 [INFO] white(AI) picked up a piece
+2021-12-12 15:27:31.879767 [INFO] calibration succeed
+2021-12-12 15:27:34.303683 [DEBUG] white(AI) stone has arrived at x-7 y-9
+2021-12-12 15:27:38.015968 [INFO] white(AI) has released the stone
+2021-12-12 15:27:38.016906 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:27:56.180642 [DEBUG] target coordinate:140 96
+2021-12-12 15:27:57.787042 [INFO] calibration succeed
+2021-12-12 15:27:57.787543 [INFO] waiting for human to place chess stone
+2021-12-12 15:28:14.780388 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:28:14.829626 [INFO] Identified new black stone position on board: x-8 y-9
+2021-12-12 15:28:15.283872 [INFO] Human's step updated on the GUI
+2021-12-12 15:28:16.082750 [INFO] Robot generate new step at x-9 y-7
+2021-12-12 15:28:16.676706 [INFO] white(AI) has finished thinking
+2021-12-12 15:28:16.680273 [DEBUG] tar_coor_str = (9,7)
+2021-12-12 15:28:20.391762 [INFO] white(AI) picked up a piece
+2021-12-12 15:28:41.774077 [INFO] calibration succeed
+2021-12-12 15:28:41.779139 [DEBUG] white(AI) stone has arrived at x-9 y-7
+2021-12-12 15:28:45.487957 [INFO] white(AI) has released the stone
+2021-12-12 15:28:45.488410 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:29:03.960218 [DEBUG] target coordinate:140 96
+2021-12-12 15:29:05.748069 [INFO] calibration succeed
+2021-12-12 15:29:05.748490 [INFO] waiting for human to place chess stone
+2021-12-12 15:30:39.880245 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:30:40.704205 [INFO] Human's step updated on the GUI
+2021-12-12 15:30:41.562453 [INFO] Robot generate new step at x-9 y-6
+2021-12-12 15:30:42.022577 [INFO] white(AI) has finished thinking
+2021-12-12 15:30:42.024223 [DEBUG] tar_coor_str = (9,6)
+2021-12-12 15:30:45.724834 [INFO] white(AI) picked up a piece
+2021-12-12 15:31:05.164715 [INFO] calibration succeed
+2021-12-12 15:31:05.167393 [DEBUG] white(AI) stone has arrived at x-9 y-6
+2021-12-12 15:31:08.858847 [INFO] white(AI) has released the stone
+2021-12-12 15:31:08.859401 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:31:25.927502 [DEBUG] target coordinate:140 96
+2021-12-12 15:31:27.926548 [INFO] calibration succeed
+2021-12-12 15:31:27.927175 [INFO] waiting for human to place chess stone
+2021-12-12 15:32:04.802509 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:32:04.892396 [INFO] Identified new black stone position on board: x-8 y-4
+2021-12-12 15:32:05.963479 [INFO] Human's step updated on the GUI
+2021-12-12 15:32:06.976698 [INFO] Robot generate new step at x-8 y-3
+2021-12-12 15:32:07.276789 [INFO] white(AI) has finished thinking
+2021-12-12 15:32:07.278064 [DEBUG] tar_coor_str = (8,3)
+2021-12-12 15:32:10.959647 [INFO] white(AI) picked up a piece
+2021-12-12 15:32:25.095495 [INFO] calibration succeed
+2021-12-12 15:32:25.098482 [DEBUG] white(AI) stone has arrived at x-8 y-3
+2021-12-12 15:32:28.809270 [INFO] white(AI) has released the stone
+2021-12-12 15:32:28.809952 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:32:40.117462 [DEBUG] target coordinate:140 96
+2021-12-12 15:32:41.855703 [INFO] calibration succeed
+2021-12-12 15:32:41.856457 [INFO] waiting for human to place chess stone
+2021-12-12 15:34:04.213178 [INFO] replay the game
+2021-12-12 15:34:52.496623 [INFO] Main program ended
+2021-12-12 15:41:46.174132 [INFO] logging saved in /home/pi/Desktop/ECE5725_project/ECE5725-Final-Project/logging/2021-12-12_system.log
+2021-12-12 15:41:46.425271 [INFO] logging saved in ./logging/2021-12-12_system.log
+2021-12-12 15:41:46.425926 [INFO] GoBang starts now
+2021-12-12 15:41:46.464715 [INFO] Hardware has been initialized successfully.
+2021-12-12 15:41:46.468614 [INFO] calibration points have been loaded
+2021-12-12 15:41:46.484285 [INFO] Control flags has been initialized
+2021-12-12 15:41:46.520688 [INFO] Start the flag reading timer
+2021-12-12 15:41:46.521399 [INFO] Waiting for human to place chess stone
+2021-12-12 15:42:13.826481 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:42:13.867112 [INFO] Identified new black stone position on board: x-5 y-4
+2021-12-12 15:42:14.145806 [INFO] Human's step updated on the GUI
+2021-12-12 15:42:14.250464 [INFO] Robot generate new step at x-6 y-5
+2021-12-12 15:42:14.571441 [INFO] white(AI) has finished thinking
+2021-12-12 15:42:14.574641 [DEBUG] tar_coor_str = (6,5)
+2021-12-12 15:42:18.236903 [INFO] white(AI) picked up a piece
+2021-12-12 15:42:30.822490 [INFO] calibration succeed
+2021-12-12 15:42:30.823964 [DEBUG] white(AI) stone has arrived at x-6 y-5
+2021-12-12 15:42:34.470733 [INFO] white(AI) has released the stone
+2021-12-12 15:42:34.471468 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:42:45.416197 [DEBUG] target coordinate:140 96
+2021-12-12 15:42:46.678078 [INFO] calibration succeed
+2021-12-12 15:42:46.678488 [INFO] waiting for human to place chess stone
+2021-12-12 15:42:54.149286 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:42:54.165805 [WARNING] No new black stone detected, try it again
+2021-12-12 15:43:04.176333 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:43:04.256617 [INFO] Identified new black stone position on board: x-6 y-4
+2021-12-12 15:43:04.276466 [INFO] Human's step updated on the GUI
+2021-12-12 15:43:04.405498 [INFO] Robot generate new step at x-7 y-4
+2021-12-12 15:43:04.687196 [INFO] white(AI) has finished thinking
+2021-12-12 15:43:04.688536 [DEBUG] tar_coor_str = (7,4)
+2021-12-12 15:43:08.337605 [INFO] white(AI) picked up a piece
+2021-12-12 15:43:20.687447 [INFO] calibration succeed
+2021-12-12 15:43:20.689425 [DEBUG] white(AI) stone has arrived at x-7 y-4
+2021-12-12 15:43:24.326031 [INFO] white(AI) has released the stone
+2021-12-12 15:43:24.326582 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:43:35.388260 [DEBUG] target coordinate:140 96
+2021-12-12 15:43:35.487697 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:35.620826 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:35.760937 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:35.930338 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:36.063088 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:36.224576 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:36.359855 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:36.491051 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:36.624202 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:36.768048 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:36.906182 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:37.046009 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:37.176998 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:37.312606 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:37.453879 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:37.587776 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:37.739869 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:37.872578 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:38.000540 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:38.138972 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:38.272030 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:38.404168 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:38.547631 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:38.672876 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:38.817868 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:38.950892 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:39.089867 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:39.239600 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:39.392818 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:39.527556 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:39.663561 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:39.792218 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:39.943309 [ERROR] Did not detect red circle, calibration failed.
+2021-12-12 15:43:41.553630 [INFO] calibration succeed
+2021-12-12 15:43:41.554029 [INFO] waiting for human to place chess stone
+2021-12-12 15:43:55.994992 [INFO] replay the game
+2021-12-12 15:43:56.846944 [INFO] Control flags has been initialized
+2021-12-12 15:44:31.795865 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:44:31.884544 [INFO] Identified new black stone position on board: x-4 y-4
+2021-12-12 15:44:32.590902 [INFO] Human's step updated on the GUI
+2021-12-12 15:44:32.695769 [INFO] Robot generate new step at x-5 y-5
+2021-12-12 15:44:32.910761 [INFO] white(AI) has finished thinking
+2021-12-12 15:44:32.911780 [DEBUG] tar_coor_str = (5,5)
+2021-12-12 15:44:36.577224 [INFO] white(AI) picked up a piece
+2021-12-12 15:44:48.113421 [INFO] calibration succeed
+2021-12-12 15:44:48.115081 [DEBUG] white(AI) stone has arrived at x-5 y-5
+2021-12-12 15:44:51.975996 [INFO] white(AI) has released the stone
+2021-12-12 15:44:51.976687 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:45:02.125766 [DEBUG] target coordinate:140 96
+2021-12-12 15:45:03.214570 [INFO] calibration succeed
+2021-12-12 15:45:03.215125 [INFO] waiting for human to place chess stone
+2021-12-12 15:45:46.059928 [INFO] Main program ended
+2021-12-12 15:51:44.765165 [INFO] logging saved in /home/pi/Desktop/ECE5725_project/ECE5725-Final-Project/logging/2021-12-12_system.log
+2021-12-12 15:51:44.908661 [INFO] logging saved in ./logging/2021-12-12_system.log
+2021-12-12 15:51:44.909111 [INFO] GoBang starts now
+2021-12-12 15:51:44.929123 [INFO] Hardware has been initialized successfully.
+2021-12-12 15:51:44.930353 [INFO] calibration points have been loaded
+2021-12-12 15:51:44.940338 [INFO] Control flags has been initialized
+2021-12-12 15:51:44.963487 [INFO] Start the flag reading timer
+2021-12-12 15:51:44.964899 [INFO] Waiting for human to place chess stone
+2021-12-12 15:51:53.199410 [INFO] Main program ended
+2021-12-12 15:52:06.223831 [INFO] logging saved in /home/pi/Desktop/ECE5725_project/ECE5725-Final-Project/logging/2021-12-12_system.log
+2021-12-12 15:52:06.357891 [INFO] logging saved in ./logging/2021-12-12_system.log
+2021-12-12 15:52:06.358333 [INFO] GoBang starts now
+2021-12-12 15:52:06.368197 [INFO] Hardware has been initialized successfully.
+2021-12-12 15:52:06.369415 [INFO] calibration points have been loaded
+2021-12-12 15:52:06.382398 [INFO] Control flags has been initialized
+2021-12-12 15:52:06.415871 [INFO] Start the flag reading timer
+2021-12-12 15:52:06.416766 [INFO] Waiting for human to place chess stone
+2021-12-12 15:52:31.500456 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:52:31.537716 [INFO] Identified new black stone position on board: x-4 y-4
+2021-12-12 15:52:32.079395 [INFO] Human's step updated on the GUI
+2021-12-12 15:52:32.201278 [INFO] Robot generate new step at x-5 y-5
+2021-12-12 15:52:32.479518 [INFO] white(AI) has finished thinking
+2021-12-12 15:52:32.481598 [DEBUG] tar_coor_str = (5,5)
+2021-12-12 15:52:36.214269 [INFO] white(AI) picked up a piece
+2021-12-12 15:52:46.963837 [INFO] calibration succeed
+2021-12-12 15:52:46.966625 [DEBUG] white(AI) stone has arrived at x-5 y-5
+2021-12-12 15:52:50.638894 [INFO] white(AI) has released the stone
+2021-12-12 15:52:50.639566 [DEBUG] origin coordinate:5 -1
+2021-12-12 15:53:00.306349 [DEBUG] target coordinate:140 96
+2021-12-12 15:53:01.553983 [INFO] calibration succeed
+2021-12-12 15:53:01.554993 [INFO] waiting for human to place chess stone
+2021-12-12 15:59:49.289198 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 15:59:49.369497 [INFO] Identified new black stone position on board: x-6 y-4
+2021-12-12 15:59:50.192872 [INFO] Human's step updated on the GUI
+2021-12-12 15:59:50.334884 [INFO] Robot generate new step at x-7 y-4
+2021-12-12 15:59:50.513666 [INFO] white(AI) has finished thinking
+2021-12-12 15:59:50.514564 [DEBUG] tar_coor_str = (7,4)
+2021-12-12 15:59:54.230391 [INFO] white(AI) picked up a piece
+2021-12-12 16:00:06.934193 [INFO] calibration succeed
+2021-12-12 16:00:06.936931 [DEBUG] white(AI) stone has arrived at x-7 y-4
+2021-12-12 16:00:10.637443 [INFO] white(AI) has released the stone
+2021-12-12 16:00:10.639930 [DEBUG] origin coordinate:5 -1
+2021-12-12 16:00:21.806394 [DEBUG] target coordinate:140 96
+2021-12-12 16:00:23.462592 [INFO] calibration succeed
+2021-12-12 16:00:23.462960 [INFO] waiting for human to place chess stone
+2021-12-12 16:00:58.308713 [INFO] Human's turn has finished, now turn to AI
+2021-12-12 16:00:58.374129 [INFO] Identified new black stone position on board: x-3 y-6
+2021-12-12 16:00:59.381369 [INFO] Human's step updated on the GUI
+2021-12-12 16:00:59.547624 [INFO] Robot generate new step at x-3 y-4
+2021-12-12 16:00:59.682267 [INFO] white(AI) has finished thinking
+2021-12-12 16:00:59.685384 [DEBUG] tar_coor_str = (3,4)
+2021-12-12 16:01:03.327164 [INFO] white(AI) picked up a piece
+2021-12-12 16:01:15.692467 [INFO] calibration succeed
+2021-12-12 16:01:15.693243 [DEBUG] white(AI) stone has arrived at x-3 y-4
+2021-12-12 16:01:19.372221 [INFO] white(AI) has released the stone
+2021-12-12 16:01:19.372992 [DEBUG] origin coordinate:5 -1
+2021-12-12 16:01:30.705534 [DEBUG] target coordinate:140 96
+2021-12-12 16:01:31.821443 [INFO] calibration succeed
+2021-12-12 16:01:31.821979 [INFO] waiting for human to place chess stone
+2021-12-12 16:15:21.786380 [INFO] Main program ended
+2021-12-12 16:26:14.457285 [INFO] logging saved in /home/pi/Desktop/ECE5725_project/ECE5725-Final-Project/logging/2021-12-12_system.log

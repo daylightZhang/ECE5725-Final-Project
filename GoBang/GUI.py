@@ -274,7 +274,7 @@ class GoBang_GUI():
         self.piece_font_2 = default_font(15)
         self.win_cap_font = default_font(35)
         self.quit_button = Button(self.DISPLAY,self.button_font,'Quit','BLACK','WHITE',665,600,False,None)
-        self.regret_button = Button(self.DISPLAY,self.button_font,'Wife Button','BLACK','WHITE',610,500,False,None)
+        self.regret_button = Button(self.DISPLAY,self.button_font,'Regret','BLACK','WHITE',650,500,False,None)
         self.replay_button = Button(self.DISPLAY,self.button_font,'Replay','BLACK','WHITE',650,400,False,None)
         self.win_caption = Caption(self.DISPLAY,self.win_cap_font,'WIN','RED',600,250)
         self.last_piece = 1
@@ -429,12 +429,13 @@ class GoBang_GUI():
             self.is_white_turn = False 
             self.human_win = False 
             self.robot_win = False 
+            self.write('info.json','regret_flag',True)
             log.info('successufully regret')
         # elif mouse_x and mouse_y: # this means the click happens in the control panel 
         #pass 
         if self.replay_button.is_on_button([mouse_x,mouse_y]): # replay button is pressed 
             log.info('replay the game')
-            self.write('info','replay_flag',True)
+            self.write('info.json','replay_flag',True)
             self.human_win = False 
             self.robot_win = False 
             self.list1.clear()
