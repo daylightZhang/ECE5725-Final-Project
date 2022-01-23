@@ -1,4 +1,5 @@
 # ECE5725-Final-Project
-2021 Fall ECE5725 Final Project
-
-Before run the main_demo.py, calibrate first.
+Name: Go Bang
+This is the 2021 Fall ECE5725 Final Project.
+The detailed project description will be displayed via a website.
+Here is the link: [wait to be updated]
